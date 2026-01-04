@@ -3,44 +3,48 @@ import { getYoutubeEmbedUrl } from '../../utils/youtube';
 import styles from './SongCard.module.css';
 
 interface SongCardProps {
-    song?: Song | null;
-    onVote: () => void;
-    isSongA: boolean;
+  song?: Song | null;
+  onVote: () => void;
+  isSongA: boolean;
 }
 
 export function SongCard({ song, onVote, isSongA }: SongCardProps) {
-    if (!song) return null;
+  if (!song) return null;
 
-    const cardClasses = [styles.songCard];
+  const cardClasses = [styles.songCard];
 
-    const voteButtonClasses = [styles.voteButton];
-    if (isSongA) {
-        voteButtonClasses.push(styles.voteButtonSongA);
-    }
+  const voteButtonClasses = [styles.voteButton];
+  if (isSongA) {
+    voteButtonClasses.push(styles.voteButtonSongA);
+  }
 
-    const embedUrl = getYoutubeEmbedUrl(song.youtubeUrl);
+  const embedUrl = getYoutubeEmbedUrl(song.youtubeUrl);
 
-    return (
-        <div class={cardClasses.join(' ')}>
-            <div class={styles.songCardContent}>
-                {(song.icon || song.header) &&  <h2><span class={styles.headerIcon}>{song.icon}</span> {song.header}</h2>}
-                <p class={styles.songTitle}>{song.song}</p>
-                <p class={styles.artistName}>{song.artist}</p>
-                {embedUrl ? (
-                    <iframe
-                        class={styles.youtubeEmbed}
-                        src={embedUrl}
-                        title={`YouTube video player for ${song.song}`}
-                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                        allowFullScreen
-                    ></iframe>
-                ) : (
-                    <p class={styles.embedError}>Video not available</p>
-                )}
-            </div>
-            <button class={voteButtonClasses.join(' ')} onClick={onVote}>
-                Vote for this song!
-            </button>
-        </div>
-    );
+  return (
+    <div class={cardClasses.join(' ')}>
+      <div class={styles.songCardContent}>
+        {(song.icon || song.header) && (
+          <h2>
+            <span class={styles.headerIcon}>{song.icon}</span> {song.header}
+          </h2>
+        )}
+        <p class={styles.songTitle}>{song.song}</p>
+        <p class={styles.artistName}>{song.artist}</p>
+        {embedUrl ? (
+          <iframe
+            class={styles.youtubeEmbed}
+            src={embedUrl}
+            title={`YouTube video player for ${song.song}`}
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+            allowFullScreen
+          ></iframe>
+        ) : (
+          <p class={styles.embedError}>Video not available</p>
+        )}
+      </div>
+      <button class={voteButtonClasses.join(' ')} onClick={onVote}>
+        Vote for this song!
+      </button>
+    </div>
+  );
 }

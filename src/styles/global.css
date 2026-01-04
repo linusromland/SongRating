@@ -1,177 +1,177 @@
 :root {
-    --primary-bg: #1a1a2e;
-    --secondary-bg: #16213e;
-    --card-bg: #2c3e50;
-    --text-color: #e0e0e0;
-    --header-text-color: #ffffff;
-    --accent-color-1: #e94560;
-    --accent-color-2: #00f5d4;
-    --gold-accent: #f9d71c;
-    --border-radius: 8px;
-    --font-main: 'Arial', sans-serif;
+  --primary-bg: #1a1a2e;
+  --secondary-bg: #16213e;
+  --card-bg: #2c3e50;
+  --text-color: #e0e0e0;
+  --header-text-color: #ffffff;
+  --accent-color-1: #e94560;
+  --accent-color-2: #00f5d4;
+  --gold-accent: #f9d71c;
+  --border-radius: 8px;
+  --font-main: 'Arial', sans-serif;
 }
 
 body {
-    font-family: var(--font-main);
-    background-color: var(--primary-bg);
-    color: var(--text-color);
-    margin: 0;
-    padding: 0;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    min-height: 100vh;
+  font-family: var(--font-main);
+  background-color: var(--primary-bg);
+  color: var(--text-color);
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  min-height: 100vh;
 }
 
 #app {
-    width: 100%;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
 .container {
-    width: 100%;
-    max-width: 1400px;
-        padding: 40px;
-    box-sizing: border-box;
-    margin: 0 auto;
-    position: relative;
-        z-index: 1;
+  width: 100%;
+  max-width: 1400px;
+  padding: 40px;
+  box-sizing: border-box;
+  margin: 0 auto;
+  position: relative;
+  z-index: 1;
 }
 
 header.app-header {
-    text-align: center;
-    margin-bottom: 50px;
-        padding: 40px;
-        background: rgba(255, 255, 255, 0.05);
-        backdrop-filter: blur(20px);
-        border: 1px solid rgba(255, 255, 255, 0.1);
-        border-radius: 20px;
-        box-shadow: 0 25px 50px rgba(0, 0, 0, 0.1);
-        position: relative;
-        overflow: hidden;
-    }
-    
-    header.app-header::before {
-        content: '';
-        position: absolute;
-        top: 0;
-        left: 0;
-        right: 0;
-        bottom: 0;
-        background: linear-gradient(135deg, var(--accent-color-1), var(--accent-color-2));
-        opacity: 0.1;
-        pointer-events: none;
+  text-align: center;
+  margin-bottom: 50px;
+  padding: 40px;
+  background: rgba(255, 255, 255, 0.05);
+  backdrop-filter: blur(20px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 20px;
+  box-shadow: 0 25px 50px rgba(0, 0, 0, 0.1);
+  position: relative;
+  overflow: hidden;
+}
+
+header.app-header::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: linear-gradient(135deg, var(--accent-color-1), var(--accent-color-2));
+  opacity: 0.1;
+  pointer-events: none;
 }
 
 .header-content {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    flex-wrap: wrap;
-    gap: 20px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 20px;
 }
 
 .title-section {
-    flex: 1;
-    text-align: left;
+  flex: 1;
+  text-align: left;
 }
 
 .theme-selector {
-    flex-shrink: 0;
+  flex-shrink: 0;
 }
 
 .theme-dropdown {
-    background-color: var(--secondary-bg);
-    color: var(--text-color);
-    border: 2px solid var(--accent-color-2);
-    border-radius: var(--border-radius);
-    padding: 8px 12px;
-    font-size: 0.9em;
-    cursor: pointer;
-    min-width: 200px;
+  background-color: var(--secondary-bg);
+  color: var(--text-color);
+  border: 2px solid var(--accent-color-2);
+  border-radius: var(--border-radius);
+  padding: 8px 12px;
+  font-size: 0.9em;
+  cursor: pointer;
+  min-width: 200px;
 }
 
 .theme-dropdown:focus {
-    outline: none;
-    border-color: var(--gold-accent);
-    box-shadow: 0 0 0 2px rgba(249, 215, 28, 0.3);
+  outline: none;
+  border-color: var(--gold-accent);
+  box-shadow: 0 0 0 2px rgba(249, 215, 28, 0.3);
 }
 .back-button,
 .home-button {
-    background-color: var(--secondary-bg);
-    color: var(--text-color);
-    text-decoration: none;
-    border: 2px solid var(--accent-color-2);
-    border-radius: var(--border-radius);
-    padding: 8px 16px;
-    font-size: 0.9em;
-    transition: all 0.3s ease;
-    display: inline-block;
+  background-color: var(--secondary-bg);
+  color: var(--text-color);
+  text-decoration: none;
+  border: 2px solid var(--accent-color-2);
+  border-radius: var(--border-radius);
+  padding: 8px 16px;
+  font-size: 0.9em;
+  transition: all 0.3s ease;
+  display: inline-block;
 }
 
 .back-button:hover,
 .home-button:hover {
-    background-color: var(--gold-accent);
-    color: var(--primary-bg);
-    transform: translateY(-2px);
-    border-color: var(--gold-accent);
+  background-color: var(--gold-accent);
+  color: var(--primary-bg);
+  transform: translateY(-2px);
+  border-color: var(--gold-accent);
 }
 
 .navigation-buttons {
-    display: flex;
-    gap: 10px;
-    flex-wrap: wrap;
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
 }
 header.app-header h1 {
-    color: var(--header-text-color);
-    font-size: 2.5em;
-    margin: 0;
-    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+  color: var(--header-text-color);
+  font-size: 2.5em;
+  margin: 0;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
 }
 
 header.app-header p {
-    color: var(--text-color);
-    font-size: 1.1em;
-    opacity: 0.9;
-        position: relative;
-        z-index: 2;
+  color: var(--text-color);
+  font-size: 1.1em;
+  opacity: 0.9;
+  position: relative;
+  z-index: 2;
 }
 
 .loading-message,
 .error-message {
-    text-align: center;
-    font-size: 1.2em;
-    padding: 20px;
-    color: var(--gold-accent);
-    width: 100%;
+  text-align: center;
+  font-size: 1.2em;
+  padding: 20px;
+  color: var(--gold-accent);
+  width: 100%;
 }
 
 @media (max-width: 768px) {
-    header.app-header h1 {
-        font-size: 2em;
-    }
-    
-        .header-content {
-            flex-direction: column;
-            text-align: center;
-        }
-    
-        .title-section {
-            text-align: center;
-        }
-    
-        .theme-dropdown {
-            min-width: 180px;
-        }
-        .navigation-buttons {
-            justify-content: center;
-        }
-    
-        .back-button,
-        .home-button {
-            font-size: 0.8em;
-            padding: 6px 12px;
-        }
+  header.app-header h1 {
+    font-size: 2em;
+  }
+
+  .header-content {
+    flex-direction: column;
+    text-align: center;
+  }
+
+  .title-section {
+    text-align: center;
+  }
+
+  .theme-dropdown {
+    min-width: 180px;
+  }
+  .navigation-buttons {
+    justify-content: center;
+  }
+
+  .back-button,
+  .home-button {
+    font-size: 0.8em;
+    padding: 6px 12px;
+  }
 }

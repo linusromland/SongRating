@@ -1,206 +1,208 @@
 .scoreboard {
-    background: rgba(255, 255, 255, 0.05);
-        backdrop-filter: blur(20px);
-        border: 1px solid rgba(255, 255, 255, 0.1);
-        padding: 40px;
-        border-radius: 20px;
-        box-shadow: 0 25px 50px rgba(0, 0, 0, 0.1);
-        margin: 50px 0;
-    width: 100%;
-    box-sizing: border-box;
-    position: relative;
-        overflow: hidden;
-    }
-    
-    .scoreboard::before {
-        content: '';
-        position: absolute;
-        top: 0;
-        left: 0;
-        right: 0;
-        bottom: 0;
-        background: linear-gradient(135deg, var(--accent-color-1), var(--accent-color-2));
-        opacity: 0.05;
-        pointer-events: none;
+  background: rgba(255, 255, 255, 0.05);
+  backdrop-filter: blur(20px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  padding: 40px;
+  border-radius: 20px;
+  box-shadow: 0 25px 50px rgba(0, 0, 0, 0.1);
+  margin: 50px 0;
+  width: 100%;
+  box-sizing: border-box;
+  position: relative;
+  overflow: hidden;
+}
+
+.scoreboard::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: linear-gradient(135deg, var(--accent-color-1), var(--accent-color-2));
+  opacity: 0.05;
+  pointer-events: none;
 }
 
 .scoreboardHeader {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    margin-bottom: 20px;
-    padding-bottom: 10px;
-    border-bottom: 2px solid var(--gold-accent);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px;
+  padding-bottom: 10px;
+  border-bottom: 2px solid var(--gold-accent);
 }
 
 .scoreboardHeader h2 {
-    color: var(--gold-accent);
-    text-align: center;
-    font-size: 2em;
-    margin-top: 0;
-    margin-bottom: 0;
+  color: var(--gold-accent);
+  text-align: center;
+  font-size: 2em;
+  margin-top: 0;
+  margin-bottom: 0;
 }
 
 .headerButtons {
-    display: flex;
-    gap: 10px;
+  display: flex;
+  gap: 10px;
 }
 
 .button {
-    background-color: var(--gold-accent);
-    color: var(--primary-bg);
-    border: none;
-    padding: 5px 10px;
-    font-size: 1em;
-    font-weight: bold;
-    border-radius: var(--border-radius);
-    cursor: pointer;
-    transition: background-color 0.3s, transform 0.2s;
+  background-color: var(--gold-accent);
+  color: var(--primary-bg);
+  border: none;
+  padding: 5px 10px;
+  font-size: 1em;
+  font-weight: bold;
+  border-radius: var(--border-radius);
+  cursor: pointer;
+  transition:
+    background-color 0.3s,
+    transform 0.2s;
 }
 
 .scoreboard table {
-    width: 100%;
-    border-collapse: collapse;
+  width: 100%;
+  border-collapse: collapse;
 }
 
 .scoreboard th,
 .scoreboard td {
-    padding: 12px 15px;
-    text-align: left;
-    border-bottom: 1px solid var(--card-bg);
-    vertical-align: middle;
+  padding: 12px 15px;
+  text-align: left;
+  border-bottom: 1px solid var(--card-bg);
+  vertical-align: middle;
 }
 
 .scoreboard th {
-    background-color: var(--card-bg);
-    color: var(--accent-color-2);
-    font-size: 1.1em;
+  background-color: var(--card-bg);
+  color: var(--accent-color-2);
+  font-size: 1.1em;
 }
 
 .scoreboard td {
-    cursor: pointer;
-    color: var(--text-color);
+  cursor: pointer;
+  color: var(--text-color);
 }
 
 .scoreboard tr:nth-child(even) td {
-    background-color: #2a3a4a;
+  background-color: #2a3a4a;
 }
 
 .scoreboard tr:nth-child(even):hover td {
-    background-color: var(--card-bg);
+  background-color: var(--card-bg);
 }
 
 .scoreboard tr:nth-child(odd):hover td {
-    background-color: #283047;
+  background-color: #283047;
 }
 
 .scoreboard tr:last-child td {
-    border-bottom: none;
+  border-bottom: none;
 }
 
 .rank {
-    font-weight: bold;
-    color: var(--gold-accent);
-    font-size: 1.2em;
+  font-weight: bold;
+  color: var(--gold-accent);
+  font-size: 1.2em;
 }
 
 .headerDetails {
-    display: flex;
-    align-items: center;
+  display: flex;
+  align-items: center;
 }
 
 .icon {
-    font-size: 1.5em;
-    margin-right: 10px;
-    line-height: 1;
+  font-size: 1.5em;
+  margin-right: 10px;
+  line-height: 1;
 }
 
 .headerName {
-    font-size: 1em;
+  font-size: 1em;
 }
 
 .toggleScoreboardButton {
-    display: block;
-    width: fit-content;
-    margin: 20px auto 0;
-    padding: 10px 20px;
-    font-size: 1em;
-    font-weight: bold;
-    color: var(--primary-bg);
-    background-color: var(--gold-accent);
-    border: none;
-    border-radius: var(--border-radius);
-    cursor: pointer;
-    transition: background-color 0.3s, transform 0.2s;
+  display: block;
+  width: fit-content;
+  margin: 20px auto 0;
+  padding: 10px 20px;
+  font-size: 1em;
+  font-weight: bold;
+  color: var(--primary-bg);
+  background-color: var(--gold-accent);
+  border: none;
+  border-radius: var(--border-radius);
+  cursor: pointer;
+  transition:
+    background-color 0.3s,
+    transform 0.2s;
 }
 
 .toggleScoreboardButton:hover {
-    background-color: var(--accent-color-2);
-    transform: scale(1.03);
+  background-color: var(--accent-color-2);
+  transform: scale(1.03);
 }
 
 .headerTitle {
-    display: flex;
-    flex-direction: column;
-    align-items: flex-start
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
 }
 
 .headerSubtitle {
-    font-size: 0.9em;
-    color: var(--text-color);
-    margin-top: 5px;
+  font-size: 0.9em;
+  color: var(--text-color);
+  margin-top: 5px;
 }
 
 .infoMessage {
-    text-align: center;
-    padding: 20px;
-    font-style: italic;
-    color: var(--text-color);
-    background-color: var(--secondary-bg);
-    border-radius: var(--border-radius);
-    margin-top: 30px;
+  text-align: center;
+  padding: 20px;
+  font-style: italic;
+  color: var(--text-color);
+  background-color: var(--secondary-bg);
+  border-radius: var(--border-radius);
+  margin-top: 30px;
 }
 
-
 @media (max-width: 768px) {
-    .scoreboard {
-        padding: 15px;
-    }
+  .scoreboard {
+    padding: 15px;
+  }
 
-    .scoreboard th,
-    .scoreboard td {
-        padding: 10px 8px;
-        font-size: 0.9em;
-    }
+  .scoreboard th,
+  .scoreboard td {
+    padding: 10px 8px;
+    font-size: 0.9em;
+  }
 
-        .icon {
-        font-size: 1.3em;
-        margin-right: 6px;
-    }
+  .icon {
+    font-size: 1.3em;
+    margin-right: 6px;
+  }
 
-        .headerName {
-        font-size: 0.9em;
-    }
+  .headerName {
+    font-size: 0.9em;
+  }
 
-    .rank {
-        font-size: 1.1em;
-    }
+  .rank {
+    font-size: 1.1em;
+  }
 
-    .toggleScoreboardButton {
-        width: 100%;
-        font-size: 0.95em;
-    }
+  .toggleScoreboardButton {
+    width: 100%;
+    font-size: 0.95em;
+  }
 }
 
 @media (max-width: 480px) {
+  .scoreboard th,
+  .scoreboard td {
+    font-size: 0.8em;
+    padding: 8px 5px;
+  }
 
-    .scoreboard th,
-    .scoreboard td {
-        font-size: 0.8em;
-        padding: 8px 5px;
-    }
-
-        .icon {
-        font-size: 1.1em;
-    }
+  .icon {
+    font-size: 1.1em;
+  }
 }
