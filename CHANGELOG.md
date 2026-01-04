@@ -1,5 +1,14 @@
 # Changelog
 
+## [2.0.0] - 2026-01-04
+
+### Added
+
+- Multi-competition support (Eurovision 2025, Melodifestivalen 2025)
+- Landing page with competition selection
+- SEO optimization with meta tags and structured data
+- Updateed UI design
+
 ## [1.1.2] - 2025-05-18
 
 ### Fixed
