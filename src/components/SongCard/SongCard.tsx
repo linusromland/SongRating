@@ -23,7 +23,7 @@ export function SongCard({ song, onVote, isSongA }: SongCardProps) {
     return (
         <div class={cardClasses.join(' ')}>
             <div class={styles.songCardContent}>
-                <h2><span class={styles.countryFlag}>{song.flag}</span> {song.country}</h2>
+                {(song.icon || song.header) &&  <h2><span class={styles.headerIcon}>{song.icon}</span> {song.header}</h2>}
                 <p class={styles.songTitle}>{song.song}</p>
                 <p class={styles.artistName}>{song.artist}</p>
                 {embedUrl ? (

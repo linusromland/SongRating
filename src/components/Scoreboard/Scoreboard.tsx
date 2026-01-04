@@ -53,6 +53,10 @@ export function Scoreboard({ title = "Your Personal Scoreboard", songs, eloRatin
         return Math.round((ratedSongs / totalSongs) * 100);
     }, [sortedSongsFull, songs]);
 
+    const showHeader = useMemo(() => {
+        return songs.some(song => song.header || song.icon);
+    }, [songs]);
+
     return (
         <section class={styles.scoreboard}>
             <div class={styles.scoreboardHeader}>
@@ -87,7 +91,7 @@ export function Scoreboard({ title = "Your Personal Scoreboard", songs, eloRatin
                 <thead>
                     <tr>
                         <th>Rank</th>
-                        <th>Country</th>
+                        {showHeader && <th>Header</th>}
                         <th>Song</th>
                         <th>Artist</th>
                         <th>ELO Rating</th>
@@ -97,12 +101,16 @@ export function Scoreboard({ title = "Your Personal Scoreboard", songs, eloRatin
                     {songsToDisplay.map((song, index) => (
                         <tr key={song.id} onClick={() => window.open(song.youtubeUrl, '_blank')}>
                             <td><span class={styles.rank}>{index + 1}</span></td>
+                            {
+                                (showHeader) && (
+                            
                             <td>
-                                <div class={styles.countryDetails}>
-                                    <span class={styles.flag}>{song.flag}</span>
-                                    <span class={styles.countryName}>{song.country}</span>
+                                <div class={styles.headerDetails}>
+                                    <span class={styles.icon}>{song.icon}</span>
+                                    <span class={styles.headerName}>{song.header}</span>
                                 </div>
                             </td>
+                                )}
                             <td>{song.song}</td>
                             <td>{song.artist}</td>
                             <td>{Math.round(song.elo ?? INITIAL_ELO)}</td>

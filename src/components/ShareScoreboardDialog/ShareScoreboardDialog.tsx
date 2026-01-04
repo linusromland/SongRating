@@ -3,6 +3,7 @@ import { compressToEncodedURIComponent } from 'lz-string';
 import { useState, useCallback } from 'preact/hooks';
 import { Dialog } from '../Dialog/Dialog';
 import type { EloRatings, UrlData } from '../../types';
+import { useTheme } from '../../context/ThemeContext';
 import styles from './ShareScoreboardDialog.module.css';
 
 interface ShareScoreboardDialogProps {
@@ -38,6 +39,7 @@ export function ShareScoreboardDialog({
     onClose,
     eloRatings
 }: ShareScoreboardDialogProps) {
+    const { currentTheme } = useTheme();
     const [scoreboardName, setScoreboardName] = useState<string>('');
     const [generatedLink, setGeneratedLink] = useState<string | null>(null);
     const [isGenerating, setIsGenerating] = useState<boolean>(false);
@@ -107,7 +109,7 @@ export function ShareScoreboardDialog({
                             class={styles.inputField}
                             value={scoreboardName}
                             onInput={handleNameChange}
-                            placeholder="E.g., My Eurovision Top 10"
+                            placeholder={currentTheme.shareDialogPlaceholder}
                             disabled={isGenerating}
                         />
                     </div>

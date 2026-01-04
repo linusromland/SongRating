@@ -3,10 +3,12 @@ import { decompressFromEncodedURIComponent } from 'lz-string';
 import { Fragment } from 'preact';
 import { useState, useEffect } from 'preact/hooks';
 import type { EloRatings, Song, UrlData } from '../types';
-import { initialSongsData } from '../data/songData';
+import { getInitialSongsData } from '../data/songData';
 import { Scoreboard } from '../components/Scoreboard/Scoreboard';
+import { useTheme } from '../context/ThemeContext';
 
 export function ScoreboardPage() {
+    const { currentTheme } = useTheme();
     const [isLoading, setIsLoading] = useState(true);
     const [allSongs, setAllSongs] = useState<Song[]>([]);
     const [eloRatings, setEloRatings] = useState<EloRatings>({});
@@ -50,12 +52,12 @@ export function ScoreboardPage() {
             window.location.href = '/';
         }
 
-        setAllSongs(initialSongsData);
+        setAllSongs(getInitialSongsData());
         setIsLoading(false);
-    }, []);
+    }, [currentTheme]);
 
     if (isLoading) {
-        return <div class="loading-message">Initializing Eurovision Scoreboard...</div>;
+        return <div class="loading-message">{currentTheme.loadingMessage}</div>;
     }
 
     return (

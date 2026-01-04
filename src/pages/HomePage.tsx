@@ -1,15 +1,17 @@
 import { Fragment } from 'preact';
 import { useState, useEffect, useCallback } from 'preact/hooks';
 import type { Song, EloRatings } from '../types';
-import { initialSongsData, K_FACTOR, INITIAL_ELO } from '../data/songData';
+import { getInitialSongsData, K_FACTOR, INITIAL_ELO } from '../data/songData';
 import { calculateExpectedScore } from '../utils/elo';
 import { BattleZone } from '../components/BattleZone/BattleZone';
 import { Scoreboard } from '../components/Scoreboard/Scoreboard';
 import { ConfirmAction } from '../components/ConfirmAction/ConfirmAction';
 import { ShareScoreboardDialog } from '../components/ShareScoreboardDialog/ShareScoreboardDialog';
+import { useTheme } from '../context/ThemeContext';
 import confirmActionStyles from '../components/ConfirmAction/ConfirmAction.module.css';
 
 export function HomePage() {
+    const { currentTheme } = useTheme();
     const [eloRatings, setEloRatings] = useState<EloRatings>({});
     const [currentPair, setCurrentPair] = useState<[Song | null, Song | null]>([null, null]);
     const [isLoading, setIsLoading] = useState(true);
@@ -19,11 +21,12 @@ export function HomePage() {
     const [isShareDialogOpen, setIsShareDialogOpen] = useState(false);
 
     useEffect(() => {
-        setAllSongs(initialSongsData);
-        const loadedRatingsRaw = localStorage.getItem('eurovisionEloRatings');
+        const themeSongs = getInitialSongsData();
+        setAllSongs(themeSongs);
+        const loadedRatingsRaw = localStorage.getItem(currentTheme.localStorageKey);
         const loadedRatings = loadedRatingsRaw ? JSON.parse(loadedRatingsRaw) : {};
         const initialRatings: EloRatings = {};
-        initialSongsData.forEach(song => {
+        themeSongs.forEach(song => {
             initialRatings[song.id] = loadedRatings[song.id] || {
                 elo: INITIAL_ELO,
                 numberOfVotes: 0,
@@ -31,7 +34,7 @@ export function HomePage() {
         });
         setEloRatings(initialRatings);
         setIsLoading(false);
-    }, []);
+    }, [currentTheme]);
 
     const selectNewPair = useCallback(() => {
         if (allSongs.length < 2) {
@@ -81,9 +84,9 @@ export function HomePage() {
 
     useEffect(() => {
         if (!isLoading) {
-            localStorage.setItem('eurovisionEloRatings', JSON.stringify(eloRatings));
+            localStorage.setItem(currentTheme.localStorageKey, JSON.stringify(eloRatings));
         }
-    }, [eloRatings, isLoading]);
+    }, [eloRatings, isLoading, currentTheme.localStorageKey]);
 
     const handleVote = useCallback((winnerId: string, loserId: string) => {
         setEloRatings(prevRatings => {
@@ -114,20 +117,20 @@ export function HomePage() {
             };
         });
         setEloRatings(resetRatings);
-        localStorage.removeItem('eurovisionEloRatings');
+        localStorage.removeItem(currentTheme.localStorageKey);
 
         setIsResetting(false);
         setIsResetConfirmOpen(false);
-    }, [allSongs]);
+    }, [allSongs, currentTheme.localStorageKey]);
 
     if (isLoading) {
-        return <div class="loading-message">Initializing Eurovision Scoreboard...</div>;
+        return <div class="loading-message">{currentTheme.loadingMessage}</div>;
     }
     if (allSongs.length < 2 && !isLoading) {
         return (
             <div class="container">
-                <header class="app-header"><h1>Eurovision 2025 Personal Scoreboard</h1></header>
-                <div class="error-message">Not enough songs. Add at least two in `src/data/songData.ts`.</div>
+                <header class="app-header"><h1>{currentTheme.scoreboardTitle}</h1></header>
+                <div class="error-message">Not enough songs. Add at least two songs to the theme configuration.</div>
             </div>
         );
     }

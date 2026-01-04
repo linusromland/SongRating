@@ -1,7 +1,7 @@
 export interface Song {
     id: string;
-    country: string;
-    flag: string;
+    header?: string;
+    icon?: string;
     artist: string;
     song: string;
     youtubeUrl: string;
