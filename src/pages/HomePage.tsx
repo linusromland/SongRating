@@ -1,7 +1,7 @@
 import { Fragment } from 'preact';
 import { useState, useEffect, useCallback } from 'preact/hooks';
 import type { Song, EloRatings } from '../types';
-import { getInitialSongsData, K_FACTOR, INITIAL_ELO } from '../data/songData';
+import { K_FACTOR, INITIAL_ELO } from '../data/songData';
 import { calculateExpectedScore } from '../utils/elo';
 import { BattleZone } from '../components/BattleZone/BattleZone';
 import { Scoreboard } from '../components/Scoreboard/Scoreboard';
@@ -12,6 +12,12 @@ import confirmActionStyles from '../components/ConfirmAction/ConfirmAction.modul
 
 export function HomePage() {
     const { currentTheme } = useTheme();
+    
+    if (!currentTheme) {
+        // Redirect to landing page if no valid theme
+        window.location.href = '/';
+        return null;
+    }
     const [eloRatings, setEloRatings] = useState<EloRatings>({});
     const [currentPair, setCurrentPair] = useState<[Song | null, Song | null]>([null, null]);
     const [isLoading, setIsLoading] = useState(true);
@@ -21,7 +27,9 @@ export function HomePage() {
     const [isShareDialogOpen, setIsShareDialogOpen] = useState(false);
 
     useEffect(() => {
-        const themeSongs = getInitialSongsData();
+        if (!currentTheme) return;
+        
+        const themeSongs = currentTheme.songs;
         setAllSongs(themeSongs);
         const loadedRatingsRaw = localStorage.getItem(currentTheme.localStorageKey);
         const loadedRatings = loadedRatingsRaw ? JSON.parse(loadedRatingsRaw) : {};
@@ -129,7 +137,15 @@ export function HomePage() {
     if (allSongs.length < 2 && !isLoading) {
         return (
             <div class="container">
-                <header class="app-header"><h1>{currentTheme.scoreboardTitle}</h1></header>
+                <header class="app-header">
+                    <div class="header-content">
+                        <div class="title-section">
+                            <h1>{currentTheme.title}</h1>
+                            <p>{currentTheme.description}</p>
+                        </div>
+                        <a href="/" class="back-button">← Back to Competitions</a>
+                    </div>
+                </header>
                 <div class="error-message">Not enough songs. Add at least two songs to the theme configuration.</div>
             </div>
         );
@@ -139,13 +155,25 @@ export function HomePage() {
 
     return (
         <Fragment>
-            {(songA && songB) ? (
-                <BattleZone songA={songA} songB={songB} onVote={handleVote} />
-            ) : (
-                allSongs.length >= 2 && <div class="loading-message">Selecting next pair...</div>
-            )}
+            <div class="container">
+                <header class="app-header">
+                    <div class="header-content">
+                        <div class="title-section">
+                            <h1>{currentTheme.title}</h1>
+                            <p>{currentTheme.description}</p>
+                        </div>
+                        <a href="/" class="back-button">← Back to Competitions</a>
+                    </div>
+                </header>
+                
+                {(songA && songB) ? (
+                    <BattleZone songA={songA} songB={songB} onVote={handleVote} />
+                ) : (
+                    allSongs.length >= 2 && <div class="loading-message">Selecting next pair...</div>
+                )}
 
-            <Scoreboard songs={allSongs} eloRatings={eloRatings} shareScoreboard={openShareDialog} clearScoreboard={openResetDialog} />
+                <Scoreboard songs={allSongs} eloRatings={eloRatings} shareScoreboard={openShareDialog} clearScoreboard={openResetDialog} />
+            </div>
 
             <ConfirmAction
                 isOpen={isResetConfirmOpen}

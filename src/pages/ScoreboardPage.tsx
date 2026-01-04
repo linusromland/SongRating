@@ -3,12 +3,17 @@ import { decompressFromEncodedURIComponent } from 'lz-string';
 import { Fragment } from 'preact';
 import { useState, useEffect } from 'preact/hooks';
 import type { EloRatings, Song, UrlData } from '../types';
-import { getInitialSongsData } from '../data/songData';
 import { Scoreboard } from '../components/Scoreboard/Scoreboard';
 import { useTheme } from '../context/ThemeContext';
 
 export function ScoreboardPage() {
     const { currentTheme } = useTheme();
+    
+    if (!currentTheme) {
+        // Redirect to landing page if no valid theme
+        window.location.href = '/';
+        return null;
+    }
     const [isLoading, setIsLoading] = useState(true);
     const [allSongs, setAllSongs] = useState<Song[]>([]);
     const [eloRatings, setEloRatings] = useState<EloRatings>({});
@@ -52,7 +57,7 @@ export function ScoreboardPage() {
             window.location.href = '/';
         }
 
-        setAllSongs(getInitialSongsData());
+        setAllSongs(currentTheme.songs);
         setIsLoading(false);
     }, [currentTheme]);
 
@@ -62,6 +67,20 @@ export function ScoreboardPage() {
 
     return (
         <Fragment>
+            <div class="container">
+                <header class="app-header">
+                    <div class="header-content">
+                        <div class="title-section">
+                            <h1>{currentTheme.title}</h1>
+                            <p>{currentTheme.description}</p>
+                        </div>
+                        <div class="navigation-buttons">
+                            <a href="/" class="back-button">← Competitions</a>
+                            <a href={`/${currentTheme.id}`} class="home-button">Rate Songs</a>
+                        </div>
+                    </div>
+                </header>
+            </div>
             <Scoreboard title={name} songs={allSongs} eloRatings={eloRatings} linkToOwnBoard />
         </Fragment>
     );

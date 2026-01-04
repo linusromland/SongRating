@@ -12,7 +12,7 @@ interface ShareScoreboardDialogProps {
     eloRatings: EloRatings;
 }
 
-const generateShareLink = (name: string, ratings: EloRatings): string => {
+const generateShareLink = (name: string, ratings: EloRatings, themeId: string): string => {
     const sanitizedName = name.replace(/[^a-zA-Z0-9 ]/g, '');
 
     const sanitizedRatings: UrlData['ratings'] = {};
@@ -31,7 +31,7 @@ const generateShareLink = (name: string, ratings: EloRatings): string => {
 
     const baseUrl = window.location.origin;
 
-    return `${baseUrl}/scoreboard?data=${base64Payload}`;
+    return `${baseUrl}/${themeId}/scoreboard?data=${base64Payload}`;
 };
 
 export function ShareScoreboardDialog({
@@ -55,8 +55,12 @@ export function ShareScoreboardDialog({
             alert("Please enter a name for your scoreboard share.");
             return;
         }
+        if (!currentTheme) {
+            alert("Theme not found.");
+            return;
+        }
         setIsGenerating(true);
-        const link = generateShareLink(scoreboardName, eloRatings);
+        const link = generateShareLink(scoreboardName, eloRatings, currentTheme.id);
         setGeneratedLink(link);
         setIsGenerating(false);
         setHasCopied(false);
@@ -109,7 +113,7 @@ export function ShareScoreboardDialog({
                             class={styles.inputField}
                             value={scoreboardName}
                             onInput={handleNameChange}
-                            placeholder={currentTheme.shareDialogPlaceholder}
+                            placeholder={currentTheme?.shareDialogPlaceholder || 'Enter name'}
                             disabled={isGenerating}
                         />
                     </div>

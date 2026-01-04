@@ -2,6 +2,7 @@ import { useState, useMemo, useCallback } from 'preact/hooks';
 import type { Song, EloRatings } from '../../types';
 import styles from './Scoreboard.module.css';
 import { INITIAL_ELO, SCOREBOARD_INITIAL_LIMIT } from '../../data/songData';
+import { useTheme } from '../../context/ThemeContext';
 
 interface ScoreboardProps {
     title?: string
@@ -14,6 +15,7 @@ interface ScoreboardProps {
 
 export function Scoreboard({ title = "Your Personal Scoreboard", songs, eloRatings, linkToOwnBoard, clearScoreboard, shareScoreboard }: ScoreboardProps) {
     const [showAll, setShowAll] = useState(false);
+    const { currentTheme } = useTheme();
 
     const sortedSongsFull = useMemo(() => {
 
@@ -68,8 +70,8 @@ export function Scoreboard({ title = "Your Personal Scoreboard", songs, eloRatin
                 </div>
                 <div class={styles.headerButtons}>
 
-                    {linkToOwnBoard && (
-                        <button class={styles.button} onClick={() => window.location.href = '/'}>
+                    {linkToOwnBoard && currentTheme && (
+                        <button class={styles.button} onClick={() => window.location.href = `/${currentTheme.id}`}>
                             Your Scoreboard
                         </button>
                     )}

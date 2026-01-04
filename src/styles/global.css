@@ -80,6 +80,31 @@ header.app-header {
     border-color: var(--gold-accent);
     box-shadow: 0 0 0 2px rgba(249, 215, 28, 0.3);
 }
+.back-button,
+.home-button {
+    background-color: var(--secondary-bg);
+    color: var(--text-color);
+    text-decoration: none;
+    border: 2px solid var(--accent-color-2);
+    border-radius: var(--border-radius);
+    padding: 8px 16px;
+    font-size: 0.9em;
+    transition: all 0.3s ease;
+    display: inline-block;
+}
+
+.back-button:hover,
+.home-button:hover {
+    background-color: var(--accent-color-2);
+    color: var(--primary-bg);
+    transform: translateY(-2px);
+}
+
+.navigation-buttons {
+    display: flex;
+    gap: 10px;
+    flex-wrap: wrap;
+}
 header.app-header h1 {
     color: var(--header-text-color);
     font-size: 2.5em;
@@ -105,6 +130,7 @@ header.app-header p {
     header.app-header h1 {
         font-size: 2em;
     }
+    
         .header-content {
             flex-direction: column;
             text-align: center;
@@ -116,5 +142,14 @@ header.app-header p {
     
         .theme-dropdown {
             min-width: 180px;
+        }
+        .navigation-buttons {
+            justify-content: center;
+        }
+    
+        .back-button,
+        .home-button {
+            font-size: 0.8em;
+            padding: 6px 12px;
         }
 }

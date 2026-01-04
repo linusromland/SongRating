@@ -1,16 +1,14 @@
 .battleZone {
     display: flex;
-    justify-content: space-around;
+    justify-content: space-between;
     align-items: stretch;
-    margin-bottom: 40px;
-    gap: 20px;
-    flex-wrap: wrap;
+    margin: 40px 0;
+        gap: 30px;
 }
 
 .songContainer {
-    flex: 1 1 45%;
-    min-width: 300px;
-    max-width: 90%;
+    flex: 1;
+        min-width: 350px;
     display: flex;
 }
 
@@ -18,16 +16,13 @@
     .battleZone {
         flex-direction: column;
         align-items: center;
+        gap: 20px;
+            margin: 20px 0;
     }
 
     .songContainer {
-        width: 90%;
-        max-width: 100%;
-        flex-basis: auto;
-        margin-bottom: 20px;
-    }
-
-    .songContainer:last-child {
-        margin-bottom: 0;
+        width: 100%;
+            max-width: 400px;
+            min-width: unset;
     }
 }

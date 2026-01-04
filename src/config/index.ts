@@ -30,17 +30,23 @@ export interface AppConfig {
     themes: Record<string, ThemeConfig>;
 }
 
-import { eurovisionConfig } from './themes/eurovision';
+import { eurovision2025Config } from './themes/eurovision2025';
 import { melodifestivalen2025Config } from './themes/melodifestivalen2025';
 
 export const appConfig: AppConfig = {
-    defaultTheme: 'eurovision',
+    defaultTheme: 'eurovision2025',
     themes: {
-        eurovision: eurovisionConfig,
+        eurovision2025: eurovision2025Config,
         melodifestivalen2025: melodifestivalen2025Config,
     }
 };
 
+// Get theme by ID (from URL)
+export const getThemeById = (themeId: string): ThemeConfig | null => {
+    return appConfig.themes[themeId] || null;
+};
+
+// Get current theme (keep for backward compatibility)
 export const getCurrentTheme = (): ThemeConfig => {
     const themeId = localStorage.getItem('selectedTheme') || appConfig.defaultTheme;
     return appConfig.themes[themeId] || appConfig.themes[appConfig.defaultTheme];

@@ -1,6 +1,6 @@
 import type { ThemeConfig } from '../index';
 
-const eurovisionSongs = [
+const eurovision2025Songs = [
     {
         "id": "al",
         "header": "Albania",
@@ -299,10 +299,10 @@ const eurovisionSongs = [
     }
 ];
 
-export const eurovisionConfig: ThemeConfig = {
-    id: 'eurovision',
-    name: 'Eurovision Song Contest',
-    title: 'Eurovision Song Rating',
+export const eurovision2025Config: ThemeConfig = {
+    id: 'eurovision2025',
+    name: 'Eurovision Song Contest 2025',
+    title: 'Eurovision 2025 Song Rating',
     description: 'Who will win your heart? Compare the songs from Eurovision Song Contest 2025 and build your ranking!',
     year: '2025',
     scoreboardTitle: 'Eurovision 2025 Personal Scoreboard',
@@ -319,5 +319,5 @@ export const eurovisionConfig: ThemeConfig = {
         accentColor2: '#00f5d4',
         goldAccent: '#f9d71c'
     },
-    songs: eurovisionSongs
+    songs: eurovision2025Songs
 };
