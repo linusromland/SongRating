@@ -14,13 +14,8 @@ export interface ThemeStyle {
 export interface ThemeConfig {
     id: string;
     name: string;
-    title: string;
     description: string;
     year: string;
-    scoreboardTitle: string;
-    loadingMessage: string;
-    shareDialogPlaceholder: string;
-    localStorageKey: string;
     style: ThemeStyle;
     songs: Song[];
 }

@@ -35,7 +35,7 @@ export function ThemeProvider({ children }: { children: any }) {
     useEffect(() => {
         if (currentTheme) {
             // Update document title
-            document.title = currentTheme.title;
+            document.title = `${currentTheme.name} Song Rating`;
             
             // Apply theme styles to CSS custom properties
             const root = document.documentElement;

@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'preact/hooks';
 import { LandingPage } from '../pages/LandingPage';
-import { HomePage } from '../pages/HomePage';
+import { CompetitionPage } from '../pages/HomePage';
 import { ScoreboardPage } from '../pages/ScoreboardPage';
 import { getThemeById } from '../config';
 
@@ -33,7 +33,7 @@ export function Router() {
         const theme = getThemeById(themeId);
         
         if (theme) {
-            return <HomePage />;
+            return <CompetitionPage />;
         }
     }
     

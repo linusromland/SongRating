@@ -113,7 +113,7 @@ export function ShareScoreboardDialog({
                             class={styles.inputField}
                             value={scoreboardName}
                             onInput={handleNameChange}
-                            placeholder={currentTheme?.shareDialogPlaceholder || 'Enter name'}
+                            placeholder={currentTheme ? `e.g., My ${currentTheme.name.split(' ')[0]} Top 10` : 'Enter name'}
                             disabled={isGenerating}
                         />
                     </div>

@@ -4,6 +4,7 @@ import { Fragment } from 'preact';
 import { useState, useEffect } from 'preact/hooks';
 import type { EloRatings, Song, UrlData } from '../types';
 import { Scoreboard } from '../components/Scoreboard/Scoreboard';
+import { YearBadge } from '../components/YearBadge/YearBadge';
 import { useTheme } from '../context/ThemeContext';
 
 export function ScoreboardPage() {
@@ -62,7 +63,7 @@ export function ScoreboardPage() {
     }, [currentTheme]);
 
     if (isLoading) {
-        return <div class="loading-message">{currentTheme.loadingMessage}</div>;
+        return <div class="loading-message">{`Initializing ${currentTheme.name.split(' ')[0]} Scoreboard...`}</div>;
     }
 
     return (
@@ -71,7 +72,8 @@ export function ScoreboardPage() {
                 <header class="app-header">
                     <div class="header-content">
                         <div class="title-section">
-                            <h1>{currentTheme.title}</h1>
+                            <h1>{currentTheme.name}</h1>
+                            <YearBadge year={currentTheme.year} />
                             <p>{currentTheme.description}</p>
                         </div>
                         <div class="navigation-buttons">

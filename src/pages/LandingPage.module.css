@@ -1,122 +1,342 @@
-.landingHeader {
+.landingContainer {
+    min-height: 100vh;
+    background: linear-gradient(135deg, #0f0f23 0%, #1a1a2e 50%, #16213e 100%);
+    position: relative;
+    overflow: hidden;
+}
+
+.landingContainer::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: radial-gradient(circle at 20% 80%, rgba(120, 119, 198, 0.3) 0%, transparent 50%),
+        radial-gradient(circle at 80% 20%, rgba(255, 119, 198, 0.3) 0%, transparent 50%),
+        radial-gradient(circle at 40% 40%, rgba(120, 219, 226, 0.2) 0%, transparent 50%);
+    pointer-events: none;
+}
+
+/* Hero Section */
+.heroSection {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 100px 40px;
+    position: relative;
+    z-index: 1;
+    min-height: 70vh;
+}
+
+.heroContent {
+    flex: 1;
+    max-width: 600px;
+}
+
+.heroIcon {
+    font-size: 4rem;
+    margin-bottom: 20px;
+    animation: pulse 2s infinite;
+}
+
+@keyframes pulse {
+
+    0%,
+    100% {
+        transform: scale(1);
+    }
+
+    50% {
+        transform: scale(1.1);
+    }
+}
+
+.heroTitle {
+    font-size: clamp(2.5rem, 5vw, 4rem);
+    font-weight: 900;
+    background: linear-gradient(135deg, #fff 0%, #a8edea 50%, #fed6e3 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    margin: 0 0 20px 0;
+    line-height: 1.1;
+}
+
+.heroSubtitle {
+    font-size: 1.3rem;
+    color: #b3b3b3;
+    margin: 0 0 40px 0;
+    line-height: 1.5;
+}
+
+.heroStats {
+    display: flex;
+    gap: 40px;
+    margin-top: 40px;
+}
+
+.statItem {
     text-align: center;
-    margin-bottom: 40px;
-    padding: 40px 20px;
-    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-    border-radius: 8px;
-    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
 }
 
-.landingHeader h1 {
-    color: #ffffff;
-    font-size: 3em;
-    margin: 0 0 10px 0;
-    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+.statNumber {
+    display: block;
+    font-size: 2rem;
+    font-weight: 900;
+    color: #fff;
+    margin-bottom: 5px;
 }
 
-.landingHeader p {
-    color: #f0f8ff;
-    font-size: 1.3em;
-    margin: 0;
-    opacity: 0.9;
+.statLabel {
+    color: #888;
+    font-size: 0.9rem;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+.heroGraphic {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    height: 300px;
+}
+
+.musicNote {
+    font-size: 3rem;
+    color: #667eea;
+    position: absolute;
+    animation: float 3s ease-in-out infinite;
+}
+
+.musicNote:nth-child(1) {
+    top: 20%;
+    left: 20%;
+    animation-delay: 0s;
+}
+
+.musicNote:nth-child(2) {
+    top: 50%;
+    left: 60%;
+    animation-delay: 1s;
+    font-size: 4rem;
+    color: #764ba2;
+}
+
+.musicNote:nth-child(3) {
+    top: 70%;
+    left: 30%;
+    animation-delay: 2s;
+    color: #f093fb;
+}
+
+@keyframes float {
+
+    0%,
+    100% {
+        transform: translateY(0px) rotate(0deg);
+    }
+
+    50% {
+        transform: translateY(-20px) rotate(10deg);
+    }
+}
+
+/* Competitions Section */
+.competitionsSection {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 60px 20px 100px;
+    position: relative;
+    z-index: 1;
+}
+
+.sectionTitle {
+    text-align: center;
+    font-size: 2.5rem;
+    font-weight: 800;
+    color: #fff;
+    margin: 0 0 60px 0;
+    position: relative;
+}
+
+.sectionTitle::after {
+    content: '';
+    position: absolute;
+    bottom: -15px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 80px;
+    height: 4px;
+    background: linear-gradient(90deg, #667eea, #764ba2);
+    border-radius: 2px;
 }
 
 .themeGrid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
-    gap: 30px;
-    max-width: 800px;
-    margin: 0 auto;
+    grid-template-columns: repeat(auto-fit, minmax(450px, 1fr));
+        gap: 50px;
+        margin-top: 60px;
+        max-width: 1000px;
+        margin-left: auto;
+        margin-right: auto;
 }
 
 .themeCard {
-    background: #2c3e50;
-    border-radius: 8px;
-    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.15);
+    background: rgba(255, 255, 255, 0.05);
+        backdrop-filter: blur(20px);
+        border: 1px solid rgba(255, 255, 255, 0.1);
+        border-radius: 20px;
+        cursor: pointer;
+        transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+        position: relative;
     overflow: hidden;
-    cursor: pointer;
-    transition: all 0.3s ease;
-    border: 2px solid transparent;
     display: flex;
     flex-direction: column;
+    min-height: 320px;
+    }
+    
+    .cardGlow {
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background: linear-gradient(135deg, rgba(102, 126, 234, 0.1) 0%, rgba(118, 75, 162, 0.1) 100%);
+        opacity: 0;
+        transition: opacity 0.3s ease;
 }
 
 .themeCard:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
-    border-color: #00f5d4;
+    transform: translateY(-10px) scale(1.02);
+        border-color: rgba(255, 255, 255, 0.3);
+        box-shadow: 0 25px 50px rgba(0, 0, 0, 0.3),
+            0 0 0 1px rgba(255, 255, 255, 0.1);
+    }
+    
+    .themeCard:hover .cardGlow {
+        opacity: 1;
 }
 
 .themeContent {
-    padding: 30px;
-    text-align: center;
+    padding: 40px;
     display: flex;
     flex-direction: column;
     flex: 1;
+    position: relative;
+        z-index: 2;
 }
 
-.themeContent h2 {
-    color: #ffffff;
-    font-size: 1.8em;
+.cardIcon {
+    font-size: 3rem;
+    margin-bottom: 20px;
+    align-self: center;
+}
+
+.themeName {
+    font-size: 1.8rem;
+    font-weight: 700;
+    color: #fff;
     margin: 0 0 10px 0;
+    text-align: center;
 }
 
-.themeContent p {
-    color: #f9d71c;
-    font-size: 1.2em;
+.themeYear {
+    display: inline-block;
+    background: linear-gradient(90deg, #667eea, #764ba2);
+    color: #fff;
+    padding: 6px 16px;
+    border-radius: 20px;
+    font-size: 0.9rem;
     font-weight: 600;
-    margin: 0 0 15px 0;
+    text-align: center;
+        align-self: center;
+        margin-bottom: 20px;
+    }
+    
+    .themeYearOverride {
+        margin-bottom: 20px;
+        align-self: center;
 }
 
 .themeDescription {
-    color: #e0e0e0;
-    font-size: 1em;
-    line-height: 1.5;
-    margin: 0 0 25px 0;
-    opacity: 0.9;
+    color: #b3b3b3;
+        font-size: 1rem;
+        line-height: 1.6;
+        margin: 0 0 30px 0;
     flex-grow: 1;
+    text-align: center;
 }
 
 .themeButton {
-    background: linear-gradient(45deg, #e94560, #00f5d4);
-    color: #ffffff;
-    padding: 12px 24px;
-    border-radius: 8px;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        color: #fff;
+        padding: 16px 32px;
+        border-radius: 50px;
     font-weight: 600;
-    font-size: 1.1em;
+    font-size: 1.1rem;
+        text-align: center;
     transition: all 0.3s ease;
+    display: flex;
+        justify-content: center;
+        align-items: center;
+        gap: 10px;
+        position: relative;
+        overflow: hidden;
+    }
+    
+    .themeButton::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: -100%;
+        width: 100%;
+        height: 100%;
+        background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+        transition: left 0.6s;
+    }
+    
+    .themeCard:hover .themeButton::before {
+        left: 100%;
+    }
+    
+    .buttonIcon {
+        transition: transform 0.3s ease;
 }
 
-.themeCard:hover .themeButton {
-    transform: scale(1.05);
-    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+.themeCard:hover .buttonIcon {
+    transform: translateX(5px);
 }
 
+/* Mobile Responsive */
 @media (max-width: 768px) {
-    .landingHeader {
-        padding: 30px 15px;
-        margin-bottom: 30px;
+    .heroSection {
+            flex-direction: column;
+            text-align: center;
+            padding: 40px 20px;
     }
-
-    .landingHeader h1 {
-        font-size: 2.2em;
+    
+                                                                .heroGraphic {
+                                                                    height: 200px;
+                                                                    margin-top: 40px;
     }
-
-    .landingHeader p {
-        font-size: 1.1em;
+    
+                                                                .heroStats {
+                                                                    justify-content: center;
     }
-
+    
     .themeGrid {
         grid-template-columns: 1fr;
-        gap: 20px;
-        padding: 0 10px;
-    }
-
-    .themeContent {
-        padding: 25px 20px;
-    }
-
-    .themeContent h2 {
-        font-size: 1.6em;
+        gap: 30px;
+        }
+                .themeCard {
+                    min-height: 280px;
+                }
+                .themeContent {
+            padding: 30px 25px;
     }
 }

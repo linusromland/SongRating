@@ -7,10 +7,11 @@ import { BattleZone } from '../components/BattleZone/BattleZone';
 import { Scoreboard } from '../components/Scoreboard/Scoreboard';
 import { ConfirmAction } from '../components/ConfirmAction/ConfirmAction';
 import { ShareScoreboardDialog } from '../components/ShareScoreboardDialog/ShareScoreboardDialog';
+import { YearBadge } from '../components/YearBadge/YearBadge';
 import { useTheme } from '../context/ThemeContext';
 import confirmActionStyles from '../components/ConfirmAction/ConfirmAction.module.css';
 
-export function HomePage() {
+export function CompetitionPage() {
     const { currentTheme } = useTheme();
     
     if (!currentTheme) {
@@ -31,7 +32,7 @@ export function HomePage() {
         
         const themeSongs = currentTheme.songs;
         setAllSongs(themeSongs);
-        const loadedRatingsRaw = localStorage.getItem(currentTheme.localStorageKey);
+        const loadedRatingsRaw = localStorage.getItem(`${currentTheme.id}EloRatings`);
         const loadedRatings = loadedRatingsRaw ? JSON.parse(loadedRatingsRaw) : {};
         const initialRatings: EloRatings = {};
         themeSongs.forEach(song => {
@@ -92,9 +93,9 @@ export function HomePage() {
 
     useEffect(() => {
         if (!isLoading) {
-            localStorage.setItem(currentTheme.localStorageKey, JSON.stringify(eloRatings));
+            localStorage.setItem(`${currentTheme.id}EloRatings`, JSON.stringify(eloRatings));
         }
-    }, [eloRatings, isLoading, currentTheme.localStorageKey]);
+    }, [eloRatings, isLoading, currentTheme]);
 
     const handleVote = useCallback((winnerId: string, loserId: string) => {
         setEloRatings(prevRatings => {
@@ -125,14 +126,14 @@ export function HomePage() {
             };
         });
         setEloRatings(resetRatings);
-        localStorage.removeItem(currentTheme.localStorageKey);
+        localStorage.removeItem(`${currentTheme.id}EloRatings`);
 
         setIsResetting(false);
         setIsResetConfirmOpen(false);
-    }, [allSongs, currentTheme.localStorageKey]);
+    }, [allSongs, currentTheme]);
 
     if (isLoading) {
-        return <div class="loading-message">{currentTheme.loadingMessage}</div>;
+        return <div class="loading-message">{`Initializing ${currentTheme.name.split(' ')[0]} Scoreboard...`}</div>;
     }
     if (allSongs.length < 2 && !isLoading) {
         return (
@@ -140,7 +141,10 @@ export function HomePage() {
                 <header class="app-header">
                     <div class="header-content">
                         <div class="title-section">
-                            <h1>{currentTheme.title}</h1>
+                            <div style="display: flex; align-items: center; gap: 15px; margin-bottom: 15px;">
+                                <h1 style="margin: 0;">{currentTheme.name}</h1>
+                                <YearBadge year={currentTheme.year} />
+                            </div>
                             <p>{currentTheme.description}</p>
                         </div>
                         <a href="/" class="back-button">← Back to Competitions</a>
@@ -159,7 +163,10 @@ export function HomePage() {
                 <header class="app-header">
                     <div class="header-content">
                         <div class="title-section">
-                            <h1>{currentTheme.title}</h1>
+                            <div style="display: flex; align-items: center; gap: 15px; margin-bottom: 15px;">
+                                <h1 style="margin: 0;">{currentTheme.name}</h1>
+                                <YearBadge year={currentTheme.year} />
+                            </div>
                             <p>{currentTheme.description}</p>
                         </div>
                         <a href="/" class="back-button">← Back to Competitions</a>
@@ -169,7 +176,7 @@ export function HomePage() {
                 {(songA && songB) ? (
                     <BattleZone songA={songA} songB={songB} onVote={handleVote} />
                 ) : (
-                    allSongs.length >= 2 && <div class="loading-message">Selecting next pair...</div>
+                    allSongs.length >= 2 && <div class="loading-message">{`Initializing ${currentTheme.name.split(' ')[0]} Scoreboard...`}</div>
                 )}
 
                 <Scoreboard songs={allSongs} eloRatings={eloRatings} shareScoreboard={openShareDialog} clearScoreboard={openResetDialog} />

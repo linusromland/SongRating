@@ -24,14 +24,9 @@ const melodifestivalen2025Songs = [
 
 export const melodifestivalen2025Config: ThemeConfig = {
     id: 'melodifestivalen2025',
-    name: 'Melodifestivalen 2025',
-    title: 'Melodifestivalen 2025 Song Rating',
+    name: 'Melodifestivalen',
     description: 'Which song will win your heart? Compare songs from Melodifestivalen 2025 and build your ranking!',
     year: '2025',
-    scoreboardTitle: 'Melodifestivalen 2025 Personal Scoreboard',
-    loadingMessage: 'Initializing Melodifestivalen Scoreboard...',
-    shareDialogPlaceholder: 'e.g., My Melodifestivalen Top 10',
-    localStorageKey: 'melodifestivalenEloRatings',
     style: {
         primaryBg: '#0f1419',
         secondaryBg: '#1a2332',

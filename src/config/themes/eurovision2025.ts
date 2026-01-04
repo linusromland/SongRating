@@ -301,14 +301,9 @@ const eurovision2025Songs = [
 
 export const eurovision2025Config: ThemeConfig = {
     id: 'eurovision2025',
-    name: 'Eurovision Song Contest 2025',
-    title: 'Eurovision 2025 Song Rating',
+    name: 'Eurovision Song Contest',
     description: 'Who will win your heart? Compare the songs from Eurovision Song Contest 2025 and build your ranking!',
     year: '2025',
-    scoreboardTitle: 'Eurovision 2025 Personal Scoreboard',
-    loadingMessage: 'Initializing Eurovision Scoreboard...',
-    shareDialogPlaceholder: 'E.g., My Eurovision Top 10',
-    localStorageKey: 'eurovisionEloRatings',
     style: {
         primaryBg: '#1a1a2e',
         secondaryBg: '#16213e', 
