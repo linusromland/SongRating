@@ -7,7 +7,7 @@
 - Multi-competition support (Eurovision 2025, Melodifestivalen 2025)
 - Landing page with competition selection
 - SEO optimization with meta tags and structured data
-- Updateed UI design
+- Updated UI design
 
 ## [1.1.2] - 2025-05-18
 
