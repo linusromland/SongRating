@@ -13,31 +13,34 @@ export function LandingPage() {
   return (
     <Fragment>
       <div class={styles.landingContainer}>
-        <div class={styles.heroSection}>
-          <div class={styles.heroContent}>
-            <h1 class={styles.heroTitle}>Song Rating Arena</h1>
-            <p class={styles.heroSubtitle}>Battle songs, build rankings, discover your favorites</p>
-            <div class={styles.heroStats}>
-              <div class={styles.statItem}>
-                <span class={styles.statNumber}>{themes.length}</span>
-                <span class={styles.statLabel}>Competitions</span>
-              </div>
-              <div class={styles.statItem}>
-                <span class={styles.statNumber}>ELO</span>
-                <span class={styles.statLabel}>Rating System</span>
+        <div class={styles.container}>
+          <div class={styles.heroSection}>
+            <div class={styles.heroContent}>
+              <h1 class={styles.heroTitle}>Song Rating Arena</h1>
+              <p class={styles.heroSubtitle}>Battle songs, build rankings, discover your favorites</p>
+              <div class={styles.heroStats}>
+                <div class={styles.statItem}>
+                  <span class={styles.statNumber}>{themes.length}</span>
+                  <span class={styles.statLabel}>Competitions</span>
+                </div>
+                <div class={styles.statItem}>
+                  <span class={styles.statNumber}>ELO</span>
+                  <span class={styles.statLabel}>Rating System</span>
+                </div>
               </div>
             </div>
-          </div>
-          <div class={styles.heroGraphic}>
-            <div class={styles.musicNote}>♪</div>
-            <div class={styles.musicNote}>♫</div>
-            <div class={styles.musicNote}>♪</div>
+            <div class={styles.heroGraphic}>
+              <div class={styles.musicNote}>♪</div>
+              <div class={styles.musicNote}>♫</div>
+              <div class={styles.musicNote}>♪</div>
+            </div>
           </div>
         </div>
 
-        <div class={styles.competitionsSection}>
-          <h2 class={styles.sectionTitle}>Choose Your Competition</h2>
-          <div class={styles.themeGrid}>
+        <div class={styles.container}>
+          <div class={styles.competitionsSection}>
+            <h2 class={styles.sectionTitle}>Choose Your Competition</h2>
+            <div class={styles.themeGrid}>
             {themes.map((theme) => (
               <div
                 key={theme.id}
@@ -58,6 +61,7 @@ export function LandingPage() {
               </div>
             ))}
           </div>
+        </div>
         </div>
       </div>
     </Fragment>
