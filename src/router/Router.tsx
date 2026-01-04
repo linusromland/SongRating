@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'preact/hooks';
 import { LandingPage } from '../pages/LandingPage';
-import { CompetitionPage } from '../pages/HomePage';
+import { CompetitionPage } from '../pages/CompetitionPage';
 import { ScoreboardPage } from '../pages/ScoreboardPage';
 import { getThemeById } from '../config';
 
