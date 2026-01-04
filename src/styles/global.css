@@ -95,9 +95,10 @@ header.app-header {
 
 .back-button:hover,
 .home-button:hover {
-    background-color: var(--accent-color-2);
+    background-color: var(--gold-accent);
     color: var(--primary-bg);
     transform: translateY(-2px);
+    border-color: var(--gold-accent);
 }
 
 .navigation-buttons {

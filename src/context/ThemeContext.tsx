@@ -12,7 +12,9 @@ const ThemeContext = createContext<ThemeContextType | null>(null);
 
 function getThemeFromUrl(): ThemeConfig | null {
     const path = window.location.pathname;
-    const themeId = path.slice(1); // Remove leading slash
+    const segments = path.split('/').filter(Boolean);
+    if (segments.length === 0) return null; // Landing page
+    const themeId = segments[0]; // Get first segment as theme ID
     return getThemeById(themeId);
 }
 

@@ -80,8 +80,9 @@ export function ScoreboardPage() {
                         </div>
                     </div>
                 </header>
+                
+                <Scoreboard title={name} songs={allSongs} eloRatings={eloRatings} linkToOwnBoard />
             </div>
-            <Scoreboard title={name} songs={allSongs} eloRatings={eloRatings} linkToOwnBoard />
         </Fragment>
     );
 }
