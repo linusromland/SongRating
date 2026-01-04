@@ -74,8 +74,10 @@ export function ScoreboardPage() {
         <header class="app-header">
           <div class="header-content">
             <div class="title-section">
-              <h1>{currentTheme.name}</h1>
-              <YearBadge year={currentTheme.year} />
+              <div style="display: flex; align-items: center; gap: 15px; margin-bottom: 15px;">
+                <h1 style="margin: 0;">{currentTheme.name}</h1>
+                <YearBadge year={currentTheme.year} />
+              </div>
               <p>{currentTheme.description}</p>
             </div>
             <div class="navigation-buttons">
