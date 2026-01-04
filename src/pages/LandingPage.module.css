@@ -1,8 +1,12 @@
 .landingContainer {
   min-height: 100vh;
+width: 100vw;
+    position: fixed;
+    top: 0;
+    left: 0;
   background: linear-gradient(135deg, #0f0f23 0%, #1a1a2e 50%, #16213e 100%);
-  position: relative;
-  overflow: hidden;
+overflow-y: auto;
+    overflow-x: hidden;
 }
 
 .landingContainer::before {
@@ -26,10 +30,9 @@
   justify-content: space-between;
   max-width: 1400px;
   margin: 0 auto;
-  padding: 100px 40px;
+padding: 60px 40px 40px;
   position: relative;
-  z-index: 1;
-  min-height: 70vh;
+z-index: 1;
 }
 
 .heroContent {
@@ -37,22 +40,7 @@
   max-width: 600px;
 }
 
-.heroIcon {
-  font-size: 4rem;
-  margin-bottom: 20px;
-  animation: pulse 2s infinite;
-}
 
-@keyframes pulse {
-  0%,
-  100% {
-    transform: scale(1);
-  }
-
-  50% {
-    transform: scale(1.1);
-  }
-}
 
 .heroTitle {
   font-size: clamp(2.5rem, 5vw, 4rem);
@@ -149,7 +137,7 @@
 .competitionsSection {
   max-width: 1200px;
   margin: 0 auto;
-  padding: 60px 20px 100px;
+padding: 40px 20px 100px;
   position: relative;
   z-index: 1;
 }

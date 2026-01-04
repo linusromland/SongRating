@@ -15,7 +15,6 @@ export function LandingPage() {
       <div class={styles.landingContainer}>
         <div class={styles.heroSection}>
           <div class={styles.heroContent}>
-            <div class={styles.heroIcon}>🎭</div>
             <h1 class={styles.heroTitle}>Song Rating Arena</h1>
             <p class={styles.heroSubtitle}>Battle songs, build rankings, discover your favorites</p>
             <div class={styles.heroStats}>
