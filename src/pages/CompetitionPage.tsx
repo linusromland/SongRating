@@ -189,7 +189,7 @@ export function CompetitionPage() {
         description={`Battle and rank songs from ${currentTheme.name} ${currentTheme.year} using our ELO rating system. ${currentTheme.description} Vote on your favorites and build your personal ranking!`}
         keywords={`${currentTheme.name}, ${currentTheme.name} ${currentTheme.year}, song battle, ELO rating, music competition, ranking, vote, ${currentTheme.songs
           .slice(0, 5)
-          .map((s) => s.country || s.title)
+          .map((s) => (s?.icon ?? "") + s.artist + " - " + s.song)
           .join(', ')}`}
         canonicalUrl={`https://songrating.linusromland.com/${currentTheme.id}`}
         structuredData={{
