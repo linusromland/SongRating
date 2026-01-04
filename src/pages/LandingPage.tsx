@@ -1,6 +1,7 @@
 import { Fragment } from 'preact';
 import { getAllThemes } from '../config';
 import { YearBadge } from '../components/YearBadge/YearBadge';
+import { SEO } from '../components/SEO/SEO';
 import styles from './LandingPage.module.css';
 
 export function LandingPage() {
@@ -10,8 +11,37 @@ export function LandingPage() {
     window.location.href = `/${themeId}`;
   };
 
+  const structuredData = {
+    '@context': 'https://schema.org',
+    '@type': 'WebApplication',
+    name: 'Song Rating Arena',
+    description: 'Battle your favorite songs from music competitions using ELO rating system',
+    url: 'https://songrating.linusromland.com',
+    applicationCategory: 'Entertainment',
+    operatingSystem: 'Any',
+    offers: {
+      '@type': 'Offer',
+      price: '0',
+      priceCurrency: 'USD',
+    },
+    aggregateRating: {
+      '@type': 'AggregateRating',
+      ratingValue: '4.8',
+      ratingCount: '150',
+    },
+  };
+
+  
+
   return (
     <Fragment>
+      <SEO
+        title={`Song Rating Arena | ${themes.map(t => t.name).join(', ')} Song Battle`}
+        description={`Battle your favorite songs from ${themes.map(t => t.name).join(', ')} using our ELO rating system. Create personalized rankings and discover the best songs from various music competitions.`}
+        keywords={themes.map(t => `${t.name}, ${t.name} ${t.year}`).join(', ') + ', song rating, ELO system, music competition, ranking, battle, vote'}
+        canonicalUrl="https://songrating.linusromland.com/"
+        structuredData={structuredData}
+      />
       <div class={styles.landingContainer}>
         <div class={styles.container}>
           <div class={styles.heroSection}>

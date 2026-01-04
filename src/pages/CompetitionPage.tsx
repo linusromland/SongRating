@@ -8,6 +8,7 @@ import { Scoreboard } from '../components/Scoreboard/Scoreboard';
 import { ConfirmAction } from '../components/ConfirmAction/ConfirmAction';
 import { ShareScoreboardDialog } from '../components/ShareScoreboardDialog/ShareScoreboardDialog';
 import { YearBadge } from '../components/YearBadge/YearBadge';
+import { SEO } from '../components/SEO/SEO';
 import { useTheme } from '../context/ThemeContext';
 import confirmActionStyles from '../components/ConfirmAction/ConfirmAction.module.css';
 
@@ -183,6 +184,21 @@ export function CompetitionPage() {
 
   return (
     <Fragment>
+      <SEO
+        title={`${currentTheme.name} ${currentTheme.year} | Song Battle Arena`}
+        description={`Battle and rank songs from ${currentTheme.name} ${currentTheme.year} using our ELO rating system. ${currentTheme.description} Vote on your favorites and build your personal ranking!`}
+        keywords={`${currentTheme.name}, ${currentTheme.name} ${currentTheme.year}, song battle, ELO rating, music competition, ranking, vote, ${currentTheme.songs.slice(0, 5).map(s => s.country || s.title).join(', ')}`}
+        canonicalUrl={`https://songrating.linusromland.com/${currentTheme.id}`}
+        structuredData={{
+          "@context": "https://schema.org",
+          "@type": "WebApplication",
+          "name": `${currentTheme.name} ${currentTheme.year} Song Battle`,
+          "description": `Battle and rank songs from ${currentTheme.name} ${currentTheme.year}`,
+          "url": `https://songrating.linusromland.com/${currentTheme.id}`,
+          "applicationCategory": "Entertainment",
+          "operatingSystem": "Web"
+        }}
+      />
       <div class="container">
         <header class="app-header">
           <div class="header-content">

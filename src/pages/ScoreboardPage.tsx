@@ -5,6 +5,7 @@ import { useState, useEffect } from 'preact/hooks';
 import type { EloRatings, Song, UrlData } from '../types';
 import { Scoreboard } from '../components/Scoreboard/Scoreboard';
 import { YearBadge } from '../components/YearBadge/YearBadge';
+import { SEO } from '../components/SEO/SEO';
 import { useTheme } from '../context/ThemeContext';
 
 export function ScoreboardPage() {
@@ -70,6 +71,24 @@ export function ScoreboardPage() {
 
   return (
     <Fragment>
+      <SEO
+        title={`${currentTheme.name} ${currentTheme.year} Scoreboard${name ? ` | ${name}'s Rankings` : ''} | Song Rating Arena`}
+        description={`View the complete song rankings for ${currentTheme.name} ${currentTheme.year}${name ? ` from ${name}` : ''}. See how songs are ranked using our ELO rating system and discover the top-rated performances.`}
+        keywords={`${currentTheme.name}, ${currentTheme.name} ${currentTheme.year}, scoreboard, rankings, leaderboard, song ratings, ELO system, music competition results`}
+        canonicalUrl={`https://songrating.linusromland.com/${currentTheme.id}/scoreboard`}
+        structuredData={{
+          "@context": "https://schema.org",
+          "@type": "WebPage",
+          "name": `${currentTheme.name} ${currentTheme.year} Scoreboard`,
+          "description": `Song rankings and scoreboard for ${currentTheme.name} ${currentTheme.year}`,
+          "url": `https://songrating.linusromland.com/${currentTheme.id}/scoreboard`,
+          "about": {
+            "@type": "MusicEvent",
+            "name": `${currentTheme.name} ${currentTheme.year}`,
+            "description": currentTheme.description
+          }
+        }}
+      />
       <div class="container">
         <header class="app-header">
           <div class="header-content">
