@@ -77,16 +77,16 @@ export function ScoreboardPage() {
         keywords={`${currentTheme.name}, ${currentTheme.name} ${currentTheme.year}, scoreboard, rankings, leaderboard, song ratings, ELO system, music competition results`}
         canonicalUrl={`https://songrating.linusromland.com/${currentTheme.id}/scoreboard`}
         structuredData={{
-          "@context": "https://schema.org",
-          "@type": "WebPage",
-          "name": `${currentTheme.name} ${currentTheme.year} Scoreboard`,
-          "description": `Song rankings and scoreboard for ${currentTheme.name} ${currentTheme.year}`,
-          "url": `https://songrating.linusromland.com/${currentTheme.id}/scoreboard`,
-          "about": {
-            "@type": "MusicEvent",
-            "name": `${currentTheme.name} ${currentTheme.year}`,
-            "description": currentTheme.description
-          }
+          '@context': 'https://schema.org',
+          '@type': 'WebPage',
+          name: `${currentTheme.name} ${currentTheme.year} Scoreboard`,
+          description: `Song rankings and scoreboard for ${currentTheme.name} ${currentTheme.year}`,
+          url: `https://songrating.linusromland.com/${currentTheme.id}/scoreboard`,
+          about: {
+            '@type': 'MusicEvent',
+            name: `${currentTheme.name} ${currentTheme.year}`,
+            description: currentTheme.description,
+          },
         }}
       />
       <div class="container">

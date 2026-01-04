@@ -187,16 +187,19 @@ export function CompetitionPage() {
       <SEO
         title={`${currentTheme.name} ${currentTheme.year} | Song Battle Arena`}
         description={`Battle and rank songs from ${currentTheme.name} ${currentTheme.year} using our ELO rating system. ${currentTheme.description} Vote on your favorites and build your personal ranking!`}
-        keywords={`${currentTheme.name}, ${currentTheme.name} ${currentTheme.year}, song battle, ELO rating, music competition, ranking, vote, ${currentTheme.songs.slice(0, 5).map(s => s.country || s.title).join(', ')}`}
+        keywords={`${currentTheme.name}, ${currentTheme.name} ${currentTheme.year}, song battle, ELO rating, music competition, ranking, vote, ${currentTheme.songs
+          .slice(0, 5)
+          .map((s) => s.country || s.title)
+          .join(', ')}`}
         canonicalUrl={`https://songrating.linusromland.com/${currentTheme.id}`}
         structuredData={{
-          "@context": "https://schema.org",
-          "@type": "WebApplication",
-          "name": `${currentTheme.name} ${currentTheme.year} Song Battle`,
-          "description": `Battle and rank songs from ${currentTheme.name} ${currentTheme.year}`,
-          "url": `https://songrating.linusromland.com/${currentTheme.id}`,
-          "applicationCategory": "Entertainment",
-          "operatingSystem": "Web"
+          '@context': 'https://schema.org',
+          '@type': 'WebApplication',
+          name: `${currentTheme.name} ${currentTheme.year} Song Battle`,
+          description: `Battle and rank songs from ${currentTheme.name} ${currentTheme.year}`,
+          url: `https://songrating.linusromland.com/${currentTheme.id}`,
+          applicationCategory: 'Entertainment',
+          operatingSystem: 'Web',
         }}
       />
       <div class="container">

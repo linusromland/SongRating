@@ -31,14 +31,15 @@ export function LandingPage() {
     },
   };
 
-  
-
   return (
     <Fragment>
       <SEO
-        title={`Song Rating Arena | ${themes.map(t => t.name).join(', ')} Song Battle`}
-        description={`Battle your favorite songs from ${themes.map(t => t.name).join(', ')} using our ELO rating system. Create personalized rankings and discover the best songs from various music competitions.`}
-        keywords={themes.map(t => `${t.name}, ${t.name} ${t.year}`).join(', ') + ', song rating, ELO system, music competition, ranking, battle, vote'}
+        title={`Song Rating Arena | ${themes.map((t) => t.name).join(', ')} Song Battle`}
+        description={`Battle your favorite songs from ${themes.map((t) => t.name).join(', ')} using our ELO rating system. Create personalized rankings and discover the best songs from various music competitions.`}
+        keywords={
+          themes.map((t) => `${t.name}, ${t.name} ${t.year}`).join(', ') +
+          ', song rating, ELO system, music competition, ranking, battle, vote'
+        }
         canonicalUrl="https://songrating.linusromland.com/"
         structuredData={structuredData}
       />
@@ -47,7 +48,9 @@ export function LandingPage() {
           <div class={styles.heroSection}>
             <div class={styles.heroContent}>
               <h1 class={styles.heroTitle}>Song Rating Arena</h1>
-              <p class={styles.heroSubtitle}>Battle songs, build rankings, discover your favorites</p>
+              <p class={styles.heroSubtitle}>
+                Battle songs, build rankings, discover your favorites
+              </p>
               <div class={styles.heroStats}>
                 <div class={styles.statItem}>
                   <span class={styles.statNumber}>{themes.length}</span>
@@ -71,27 +74,29 @@ export function LandingPage() {
           <div class={styles.competitionsSection}>
             <h2 class={styles.sectionTitle}>Choose Your Competition</h2>
             <div class={styles.themeGrid}>
-            {themes.map((theme) => (
-              <div
-                key={theme.id}
-                class={styles.themeCard}
-                onClick={() => handleThemeSelect(theme.id)}
-              >
-                <div class={styles.cardGlow}></div>
-                <div class={styles.themeContent}>
-                  <div class={styles.cardIcon}>{theme.id.includes('eurovision') ? '🇪🇺' : '🇸🇪'}</div>
-                  <h3 class={styles.themeName}>{theme.name}</h3>
-                  <YearBadge year={theme.year} className={styles.themeYearOverride} />
-                  <p class={styles.themeDescription}>{theme.description}</p>
-                  <div class={styles.themeButton}>
-                    <span>Start Rating</span>
-                    <span class={styles.buttonIcon}>→</span>
+              {themes.map((theme) => (
+                <div
+                  key={theme.id}
+                  class={styles.themeCard}
+                  onClick={() => handleThemeSelect(theme.id)}
+                >
+                  <div class={styles.cardGlow}></div>
+                  <div class={styles.themeContent}>
+                    <div class={styles.cardIcon}>
+                      {theme.id.includes('eurovision') ? '🇪🇺' : '🇸🇪'}
+                    </div>
+                    <h3 class={styles.themeName}>{theme.name}</h3>
+                    <YearBadge year={theme.year} className={styles.themeYearOverride} />
+                    <p class={styles.themeDescription}>{theme.description}</p>
+                    <div class={styles.themeButton}>
+                      <span>Start Rating</span>
+                      <span class={styles.buttonIcon}>→</span>
+                    </div>
                   </div>
                 </div>
-              </div>
-            ))}
+              ))}
+            </div>
           </div>
-        </div>
         </div>
       </div>
     </Fragment>
