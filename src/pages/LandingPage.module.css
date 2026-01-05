@@ -31,6 +31,17 @@
   z-index: 1;
 }
 
+@media (max-width: 768px) {
+  .container {
+    padding: 20px;
+  }
+}
+
+@media (max-width: 480px) {
+  .container {
+    padding: 15px;
+  }
+}
 /* Hero Section */
 .heroSection {
   display: flex;
@@ -332,39 +343,149 @@
   .heroSection {
     flex-direction: column;
     text-align: center;
-    padding: 30px 20px;
+    padding: 25px 15px;
+      margin-bottom: 20px;
+    }
+    
+    .heroContent {
+      max-width: 100%;
+    }
+    
+    .heroTitle {
+      font-size: clamp(2rem, 8vw, 3rem);
     margin-bottom: 15px;
   }
 
+    .heroSubtitle {
+      font-size: 1.1rem;
+      margin-bottom: 25px;
+    }
+  
+    .heroStats {
+      justify-content: center;
+      gap: 30px;
+      margin-top: 25px;
+    }
   .heroGraphic {
-    height: 150px;
-    margin-top: 20px;
+    height: 120px;
+      margin-top: 15px;
     overflow: hidden;
     position: relative;
   }
 
   .musicNote {
+    font-size: 1.8rem;
+    }
+    
+    .musicNote:nth-child(2) {
+      font-size: 2.2rem;
+    }
+    
+    .competitionsSection {
+      padding: 5px 0 60px;
+    }
+    
+    .sectionTitle {
     font-size: 2rem;
+    margin-bottom: 40px;
   }
 
-  .musicNote:nth-child(2) {
+    .themeGrid {
+      grid-template-columns: 1fr;
+      gap: 25px;
+      margin-top: 40px;
+    }
+  
+    .themeCard {
+      min-height: 260px;
+    }
+  
+    .themeContent {
+      padding: 25px 20px;
+    }
+  
+    .cardIcon {
     font-size: 2.5rem;
+    margin-bottom: 15px;
+    }
+    
+    .themeName {
+      font-size: 1.5rem;
+      margin-bottom: 8px;
+    }
+    
+    .themeDescription {
+      font-size: 0.95rem;
+      margin-bottom: 25px;
+    }
+    
+    .themeButton {
+      padding: 14px 28px;
+      font-size: 1rem;
+    }
+    }
+    
+    @media (max-width: 480px) {
+      .heroSection {
+        padding: 20px 12px;
+        margin-bottom: 15px;
+      }
+    
+      .heroTitle {
+        font-size: clamp(1.8rem, 7vw, 2.5rem);
+      }
+    
+      .heroSubtitle {
+        font-size: 1rem;
   }
 
   .heroStats {
-    justify-content: center;
+    gap: 25px;
+      margin-top: 20px;
+    }
+    
+    .statNumber {
+      font-size: 1.6rem;
+    }
+    
+    .statLabel {
+      font-size: 0.8rem;
+    }
+    
+    .sectionTitle {
+      font-size: 1.8rem;
+      margin-bottom: 30px;
   }
 
   .themeGrid {
-    grid-template-columns: 1fr;
-    gap: 30px;
+    gap: 20px;
+      margin-top: 30px;
   }
 
   .themeCard {
-    min-height: 280px;
+    min-height: 240px;
   }
 
   .themeContent {
-    padding: 30px 25px;
+    padding: 20px 16px;
+    }
+    
+    .cardIcon {
+      font-size: 2.2rem;
+      margin-bottom: 12px;
+    }
+    
+    .themeName {
+      font-size: 1.3rem;
+    }
+    
+    .themeDescription {
+      font-size: 0.9rem;
+      margin-bottom: 20px;
+    }
+    
+    .themeButton {
+      padding: 12px 24px;
+      font-size: 0.95rem;
   }
 }
