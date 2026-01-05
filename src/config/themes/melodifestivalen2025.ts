@@ -192,7 +192,7 @@ export const melodifestivalen2025Config: ThemeConfig = {
   id: 'melodifestivalen2025',
   name: 'Melodifestivalen',
   description:
-    'Which song will win your heart? Compare songs from Melodifestivalen 2025 and build your ranking!',
+    'Sweden\'s beloved music competition! Battle through 30 incredible songs competing to represent Sweden at Eurovision 2025. From schlager classics to modern pop. Which song deserves your vote?',
   year: '2025',
   style: {
     primaryBg: '#0f1419',

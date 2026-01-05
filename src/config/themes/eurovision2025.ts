@@ -303,7 +303,7 @@ export const eurovision2025Config: ThemeConfig = {
   id: 'eurovision2025',
   name: 'Eurovision Song Contest',
   description:
-    'Who will win your heart? Compare the songs from Eurovision Song Contest 2025 and build your ranking!',
+    'Europe\'s biggest music celebration! Rate and rank songs from 37 countries competing for the Eurovision crown in Basel 2025. United by music, divided by points!',
   year: '2025',
   style: {
     primaryBg: '#1a1a2e',

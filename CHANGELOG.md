@@ -1,5 +1,11 @@
 # Changelog
 
+## [2.0.1] - 2026-01-05
+
+### Fixed
+- Fixed minor bugs with mobile responsiveness.
+- Updated descriptions for competitions.
+
 ## [2.0.0] - 2026-01-04
 
 ### Added

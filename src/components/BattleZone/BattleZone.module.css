@@ -39,7 +39,7 @@
 
   .songContainer {
     width: 100%;
-    max-width: 400px;
+    max-width: none;
     min-width: unset;
   }
 }
