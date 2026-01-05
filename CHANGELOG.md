@@ -1,6 +1,6 @@
 # Changelog
 
-## [Unreleased]
+## [2.0.1] - 2026-01-05
 
 ### Fixed
 - Fixed minor bugs with mobile responsiveness.
