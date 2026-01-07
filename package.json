@@ -11,7 +11,7 @@
   },
   "dependencies": {
     "lz-string": "^1.5.0",
-    "preact": "^10.26.5"
+    "preact": "^10.28.2"
   },
   "devDependencies": {
     "@preact/preset-vite": "^2.10.1",
