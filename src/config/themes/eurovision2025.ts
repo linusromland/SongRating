@@ -1,6 +1,7 @@
+import type { Song } from '../../types';
 import type { ThemeConfig } from '../index';
 
-const eurovision2025Songs = [
+const eurovision2025Songs: Song[] = [
   {
     id: 'al',
     header: 'Albania',

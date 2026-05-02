@@ -1,6 +1,7 @@
+import type { Song } from '../../types';
 import type { ThemeConfig } from '../index';
 
-const melodifestivalen2025Songs = [
+const melodifestivalen2025Songs: Song[] = [
   // Heat 1
   {
     id: 'albinJohnsen',

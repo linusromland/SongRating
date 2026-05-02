@@ -26,13 +26,17 @@ export interface AppConfig {
 }
 
 import { eurovision2025Config } from './themes/eurovision2025';
+import { eurovision2026Config } from './themes/eurovision2026';
 import { melodifestivalen2025Config } from './themes/melodifestivalen2025';
+import { melodifestivalen2026Config } from './themes/melodifestivalen2026';
 
 export const appConfig: AppConfig = {
   defaultTheme: 'eurovision2025',
   themes: {
     eurovision2025: eurovision2025Config,
+    eurovision2026: eurovision2026Config,
     melodifestivalen2025: melodifestivalen2025Config,
+    melodifestivalen2026: melodifestivalen2026Config,
   },
 };
 

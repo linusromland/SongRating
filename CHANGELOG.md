@@ -1,5 +1,12 @@
 # Changelog
 
+
+## [2.1.0] - 2026-05-02
+
+### Fixed
+- Added Eurovision 2026
+- Added Melodifestivalen 2026
+
 ## [2.0.1] - 2026-01-05
 
 ### Fixed
