@@ -1,0 +1,400 @@
+.consentOverlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0, 0, 0, 0.6);
+    backdrop-filter: blur(4px);
+    z-index: 2000;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 2rem;
+    animation: fadeInBackdrop 0.4s ease-out;
+}
+
+@keyframes fadeInBackdrop {
+    from {
+        opacity: 0;
+        backdrop-filter: blur(0px);
+    }
+
+    to {
+        opacity: 1;
+        backdrop-filter: blur(4px);
+    }
+}
+
+.consentModal {
+    background: linear-gradient(145deg, #0f0f23 0%, #1a1a2e 50%, #16213e 100%);
+    border-radius: 24px;
+    box-shadow:
+        0 25px 50px rgba(0, 0, 0, 0.8),
+        0 10px 20px rgba(0, 0, 0, 0.4),
+        inset 0 1px 0 rgba(255, 255, 255, 0.1),
+        0 0 0 1px rgba(255, 255, 255, 0.05);
+    max-width: 480px;
+    width: 100%;
+    border: 1px solid rgba(255, 255, 255, 0.15);
+    animation: cardSlideIn 0.5s cubic-bezier(0.34, 1.56, 0.64, 1) 0.1s both;
+    position: relative;
+    overflow: hidden;
+}
+
+@keyframes cardSlideIn {
+    from {
+        opacity: 0;
+        transform: translateY(30px) scale(0.9);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+    }
+}
+
+.consentModal::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 3px;
+    background: linear-gradient(90deg, var(--color-primary), var(--color-accent), var(--color-primary));
+    border-radius: 24px 24px 0 0;
+}
+
+.consentHeader {
+    padding: 2.5rem 2rem 1.5rem;
+    text-align: center;
+    background: linear-gradient(135deg, rgba(255, 255, 255, 0.03) 0%, rgba(255, 255, 255, 0.01) 100%);
+    position: relative;
+    backdrop-filter: blur(10px);
+}
+
+.consentHeader::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 2rem;
+    right: 2rem;
+    height: 1px;
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.15), transparent);
+}
+
+.consentTitle {
+    margin: 0 0 0.5rem;
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: #ffffff;
+    text-shadow: 0 1px 2px rgba(0, 0, 0, 0.3);
+}
+
+.consentSubtitle {
+    margin: 0;
+    font-size: 1rem;
+    color: #b8b8d4;
+    font-weight: 500;
+}
+
+.consentBody {
+    padding: 2rem;
+    margin-bottom: 1.5rem;
+    text-align: center;
+    background: linear-gradient(135deg, rgba(255, 255, 255, 0.02) 0%, rgba(255, 255, 255, 0.005) 100%);
+    position: relative;
+}
+
+.consentBody::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 1rem;
+    right: 1rem;
+    bottom: 0;
+    background: linear-gradient(145deg, rgba(255, 255, 255, 0.02) 0%, rgba(255, 255, 255, 0.008) 100%);
+    border-radius: 12px;
+    border: 1px solid rgba(255, 255, 255, 0.05);
+    z-index: -1;
+}
+
+.consentIcon {
+    font-size: 3rem;
+    margin-bottom: 1rem;
+    filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.1));
+}
+
+.consentText {
+    color: #f0f0f5;
+    font-size: 1rem;
+    line-height: 1.7;
+    margin: 0;
+    text-align: left;
+    position: relative;
+    z-index: 1;
+}
+
+.consentDetails {
+    background: linear-gradient(145deg, rgba(0, 0, 0, 0.2) 0%, rgba(0, 0, 0, 0.1) 100%);
+    border-radius: 16px;
+    padding: 1.5rem;
+    margin: 1.5rem 0 0;
+    text-align: left;
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    max-height: 200px;
+    overflow-y: auto;
+    animation: expandDetails 0.3s ease-out;
+    backdrop-filter: blur(5px);
+    position: relative;
+}
+
+@keyframes expandDetails {
+    from {
+        opacity: 0;
+        max-height: 0;
+        padding-top: 0;
+        padding-bottom: 0;
+    }
+
+    to {
+        opacity: 1;
+        max-height: 200px;
+        padding-top: 1.5rem;
+        padding-bottom: 1.5rem;
+    }
+}
+
+.consentDetails h3 {
+    margin: 0 0 1rem;
+    color: #ffffff;
+    font-size: 1.1rem;
+    font-weight: 600;
+}
+
+.consentDetails ul {
+    margin: 0 0 1rem;
+    padding-left: 0;
+    list-style: none;
+}
+
+.consentDetails li {
+    margin: 0.75rem 0;
+    color: #e8e8f0;
+    line-height: 1.5;
+    padding-left: 1.5rem;
+    position: relative;
+}
+
+.consentDetails li::before {
+    content: '✓';
+    position: absolute;
+    left: 0;
+    color: var(--color-primary);
+    font-weight: bold;
+    font-size: 0.9rem;
+}
+
+.privacyNote {
+    margin: 1rem 0 0;
+    padding: 1.25rem;
+    background: linear-gradient(135deg, rgba(255, 255, 255, 0.03) 0%, rgba(255, 255, 255, 0.01) 100%);
+    border-radius: 12px;
+    font-size: 0.9rem;
+    color: #d0d0e0;
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    backdrop-filter: blur(5px);
+}
+
+.privacyNote strong {
+    color: var(--color-primary);
+}
+
+.consentFooter {
+    padding: 1rem 2rem 2rem;
+    background: linear-gradient(135deg, rgba(0, 0, 0, 0.2) 0%, rgba(0, 0, 0, 0.1) 100%);
+    border-radius: 0 0 24px 24px;
+    border-top: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.consentActions {
+    display: flex;
+    gap: 1rem;
+    margin-top: 1rem;
+    justify-content: center;
+}
+
+.consentButton {
+    padding: 0.875rem 1.75rem;
+    border-radius: 12px;
+    font-size: 1rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    border: 2px solid transparent;
+    min-width: 140px;
+    position: relative;
+    overflow: hidden;
+    text-transform: none;
+}
+
+.consentButton::before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 0;
+    height: 0;
+    background: rgba(255, 255, 255, 0.2);
+    border-radius: 50%;
+    transition: all 0.5s ease;
+    transform: translate(-50%, -50%);
+}
+
+.consentButton:hover::before {
+    width: 300px;
+    height: 300px;
+}
+
+.consentButton:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 12px 30px rgba(0, 0, 0, 0.15);
+}
+
+.consentButton:active {
+    transform: translateY(0);
+}
+
+.acceptButton {
+    background: linear-gradient(135deg, var(--color-primary) 0%, var(--color-accent) 100%);
+    color: white;
+    border-color: var(--color-primary);
+    box-shadow: 0 4px 15px rgba(var(--color-primary-rgb, 139, 69, 19), 0.3);
+}
+
+.acceptButton:hover {
+    background: linear-gradient(135deg, var(--color-accent) 0%, var(--color-primary) 100%);
+    box-shadow: 0 12px 30px rgba(var(--color-primary-rgb, 139, 69, 19), 0.4);
+}
+
+.declineButton {
+    background: var(--color-bg-primary);
+    color: var(--color-text-primary);
+    border-color: var(--color-border);
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
+}
+
+.declineButton:hover {
+    background: var(--color-bg-secondary);
+    border-color: var(--color-primary);
+    color: var(--color-primary);
+}
+
+.learnMoreButton {
+    background: none;
+    border: none;
+    color: var(--color-primary);
+    font-size: 0.9rem;
+    cursor: pointer;
+    padding: 0.75rem 1rem;
+    border-radius: 8px;
+    transition: all 0.2s ease;
+    margin: 0 auto 0.5rem;
+    display: block;
+    font-weight: 500;
+}
+
+.learnMoreButton:hover {
+    background: rgba(var(--color-primary-rgb, 139, 69, 19), 0.1);
+    color: var(--color-accent);
+    transform: translateY(-1px);
+}
+
+/* Responsive design */
+@media (max-width: 768px) {
+    .consentOverlay {
+        padding: 1rem;
+    }
+
+    .consentModal {
+        max-width: none;
+        margin: 0;
+        border-radius: 16px;
+    }
+
+    .consentHeader {
+        padding: 1.5rem 1.5rem 1rem;
+    }
+
+    .consentTitle {
+        font-size: 1.25rem;
+    }
+
+    .consentBody {
+        padding: 1rem 1.5rem;
+    }
+
+    .consentFooter {
+        padding: 1rem 1.5rem 1.5rem;
+        border-radius: 0 0 16px 16px;
+    }
+
+    .consentText {
+        font-size: 0.9rem;
+    }
+
+    .consentButton {
+        font-size: 0.9rem;
+        padding: 0.75rem 1.25rem;
+        min-width: 120px;
+    }
+
+    .consentDetails {
+        max-height: 150px;
+    }
+}
+
+@media (max-width: 480px) {
+    .consentOverlay {
+        padding: 0.75rem;
+        align-items: flex-start;
+        padding-top: 2rem;
+    }
+
+    .consentModal {
+        border-radius: 12px;
+    }
+
+    .consentActions {
+        flex-direction: column;
+        gap: 0.75rem;
+    }
+
+    .consentButton {
+        width: 100%;
+        min-width: auto;
+    }
+
+    .consentHeader {
+        padding: 1.25rem 1.25rem 0.75rem;
+    }
+
+    .consentBody {
+        padding: 0.75rem 1.25rem;
+    }
+
+    .consentFooter {
+        padding: 0.75rem 1.25rem 1.25rem;
+        border-radius: 0 0 12px 12px;
+    }
+
+    .consentDetails {
+        padding: 1rem;
+        margin: 1rem 0 0;
+        max-height: 120px;
+    }
+
+    .consentIcon {
+        font-size: 2.5rem;
+    }
+}

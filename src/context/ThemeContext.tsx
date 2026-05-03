@@ -2,6 +2,7 @@ import { createContext } from 'preact';
 import { useState, useEffect, useContext } from 'preact/hooks';
 import type { ThemeConfig } from '../config';
 import { getThemeById, getAllThemes } from '../config';
+import { trackEvent, initializeSession } from '../utils/analytics';
 
 interface ThemeContextType {
   currentTheme: ThemeConfig | null;
@@ -49,6 +50,24 @@ export function ThemeProvider({ children }: { children: any }) {
       root.style.setProperty('--accent-color-1', style.accentColor1);
       root.style.setProperty('--accent-color-2', style.accentColor2);
       root.style.setProperty('--gold-accent', style.goldAccent);
+      
+      // Track theme visit for analytics
+      trackEvent({
+        type: 'theme_visit',
+        theme: currentTheme.id,
+        data: {
+          themeName: currentTheme.name,
+          themeYear: currentTheme.year,
+          songCount: currentTheme.songs.length
+        }
+      }).catch(error => {
+        console.warn('Failed to track theme visit:', error);
+      });
+      
+      // Update analytics session with current theme
+      initializeSession(true, currentTheme.id).catch(error => {
+        console.warn('Failed to update session theme:', error);
+      });
     } else {
       // Apply neutral landing page styles
       document.title = 'Song Rating App';
@@ -62,6 +81,14 @@ export function ThemeProvider({ children }: { children: any }) {
       root.style.setProperty('--accent-color-1', '#667eea');
       root.style.setProperty('--accent-color-2', '#764ba2');
       root.style.setProperty('--gold-accent', '#f9d71c');
+      
+      // Track landing page visit for analytics
+      trackEvent({
+        type: 'page_view',
+        page: 'landing'
+      }).catch(error => {
+        console.warn('Failed to track landing page visit:', error);
+      });
     }
   }, [currentTheme]);
   return (

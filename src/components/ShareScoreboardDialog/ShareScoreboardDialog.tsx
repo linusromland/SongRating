@@ -4,6 +4,7 @@ import { useState, useCallback } from 'preact/hooks';
 import { Dialog } from '../Dialog/Dialog';
 import type { EloRatings, UrlData } from '../../types';
 import { useTheme } from '../../context/ThemeContext';
+import { trackEvent } from '../../utils/analytics';
 import styles from './ShareScoreboardDialog.module.css';
 
 interface ShareScoreboardDialogProps {
@@ -60,7 +61,20 @@ export function ShareScoreboardDialog({ isOpen, onClose, eloRatings }: ShareScor
     setGeneratedLink(link);
     setIsGenerating(false);
     setHasCopied(false);
-  }, [scoreboardName, eloRatings]);
+    
+    // Track scoreboard sharing event
+    trackEvent({
+      type: 'scoreboard_share',
+      theme: currentTheme.id,
+      data: {
+        shareboardName: scoreboardName,
+        songsRated: Object.keys(eloRatings).filter(songId => eloRatings[songId].numberOfVotes > 0).length,
+        totalVotes: Object.values(eloRatings).reduce((sum, rating) => sum + rating.numberOfVotes, 0)
+      }
+    }).catch(error => {
+      console.warn('Failed to track scoreboard share:', error);
+    });
+  }, [scoreboardName, eloRatings, currentTheme]);
 
   const handleCopyLink = useCallback(() => {
     if (generatedLink) {
@@ -69,12 +83,26 @@ export function ShareScoreboardDialog({ isOpen, onClose, eloRatings }: ShareScor
         .then(() => {
           setHasCopied(true);
           setTimeout(() => setHasCopied(false), 2000);
+          
+          // Track link copying event
+          if (currentTheme) {
+            trackEvent({
+              type: 'scoreboard_share',
+              theme: currentTheme.id,
+              data: {
+                action: 'copy_link',
+                shareboardName: scoreboardName
+              }
+            }).catch(error => {
+              console.warn('Failed to track link copy:', error);
+            });
+          }
         })
         .catch((err) => {
           console.error('Failed to copy link: ', err);
         });
     }
-  }, [generatedLink]);
+  }, [generatedLink, currentTheme, scoreboardName]);
 
   const resetDialogState = () => {
     setScoreboardName('');

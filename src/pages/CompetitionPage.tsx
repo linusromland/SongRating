@@ -10,6 +10,7 @@ import { ShareScoreboardDialog } from '../components/ShareScoreboardDialog/Share
 import { YearBadge } from '../components/YearBadge/YearBadge';
 import { SEO } from '../components/SEO/SEO';
 import { useTheme } from '../context/ThemeContext';
+import { trackVote } from '../utils/analytics';
 import confirmActionStyles from '../components/ConfirmAction/ConfirmAction.module.css';
 
 export function CompetitionPage() {
@@ -111,6 +112,20 @@ export function CompetitionPage() {
         const expectedWinner = calculateExpectedScore(winnerRating, loserRating);
         const newWinnerRating = winnerRating + K_FACTOR * (1 - expectedWinner);
         const newLoserRating = loserRating + K_FACTOR * (0 - (1 - expectedWinner));
+        
+        // Track vote event for analytics
+        trackVote({
+          theme: currentTheme.id,
+          winnerId,
+          loserId,
+          winnerPreviousElo: winnerRating,
+          loserPreviousElo: loserRating,
+          winnerElo: newWinnerRating,
+          loserElo: newLoserRating
+        }).catch(error => {
+          console.warn('Failed to track vote:', error);
+        });
+        
         return {
           ...prevRatings,
           [winnerId]: {
@@ -125,7 +140,7 @@ export function CompetitionPage() {
       });
       setCurrentPair([null, null]);
     },
-    [setCurrentPair]
+    [setCurrentPair, currentTheme.id]
   );
 
   const openResetDialog = () => setIsResetConfirmOpen(true);

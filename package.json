@@ -5,8 +5,14 @@
   "type": "module",
   "scripts": {
     "dev": "vite",
+    "dev:server": "cd server && npm run dev",
+    "dev:full": "concurrently \"npm run dev\" \"npm run dev:server\"",
     "build": "tsc -b && vite build",
+    "build:server": "cd server && npm run build",
+    "build:full": "npm run build && npm run build:server",
     "preview": "vite preview",
+    "start": "cd server && npm start",
+    "install:all": "npm install && cd server && npm install",
     "format": "prettier --write \"src/**/*.{ts,tsx,js,jsx,css,json}\" \"*.{ts,tsx,js,jsx,css,json,md}\""
   },
   "dependencies": {
@@ -15,6 +21,8 @@
   },
   "devDependencies": {
     "@preact/preset-vite": "^2.10.1",
+    "@types/node": "^25.6.0",
+    "concurrently": "^8.2.2",
     "prettier": "^3.7.4",
     "typescript": "~5.8.3",
     "vite": "^6.3.5"
