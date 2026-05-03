@@ -7,7 +7,7 @@
 - Fixed YouTube Error 153 "Video player configuration error" by updating Content Security Policy to properly allow YouTube embeds
 - Updated CSP directives to include necessary YouTube domains and permissions for iframe functionality
 
-# [2.2.1] - 2026-05-03
+## [2.2.1] - 2026-05-03
 
 ### Fixed
 
