@@ -1,5 +1,9 @@
 # Changelog
 
+## [2.2.0] - 2026-05-03
+
+### Added
+- Added support for analytics tracking to monitor user interactions and improve the app based on usage data.
 
 ## [2.1.0] - 2026-05-02
 
