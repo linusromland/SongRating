@@ -35,8 +35,10 @@ export function SongCard({ song, onVote, isSongA }: SongCardProps) {
             class={styles.youtubeEmbed}
             src={embedUrl}
             title={`YouTube video player for ${song.song}`}
-            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+            frameborder="0"
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
             allowFullScreen
+            referrerPolicy="strict-origin-when-cross-origin"
           ></iframe>
         ) : (
           <p class={styles.embedError}>Video not available</p>

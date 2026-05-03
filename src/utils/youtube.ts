@@ -26,5 +26,5 @@ export function getYoutubeEmbedUrl(youtubeWatchUrl?: string): string {
     videoId = youtubeWatchUrl;
   }
 
-  return videoId ? `https://www.youtube.com/embed/${videoId}` : '';
+  return videoId ? `https://www.youtube-nocookie.com/embed/${videoId}?enablejsapi=1&origin=${typeof window !== 'undefined' ? window.location.origin : ''}` : '';
 }

@@ -1,5 +1,14 @@
 # Changelog
 
+## [2.2.3] - 2026-05-03
+
+### Fixed
+
+- Further fixed YouTube Error 153 in Docker environments by updating iframe attributes and embed URL format
+- Changed YouTube embeds to use `youtube-nocookie.com` domain for better compatibility
+- Added required iframe attributes including `frameborder="0"` and `referrerPolicy` for proper cross-origin handling
+- Added YouTube JavaScript API support with `enablejsapi=1` parameter
+
 ## [2.2.2] - 2026-05-03
 
 ### Fixed
