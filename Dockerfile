@@ -45,11 +45,11 @@ RUN npm ci --only=production && npm cache clean --force
 
 COPY --from=backend-builder /app/server/dist ./dist
 
-# Copy frontend build files
-COPY --from=frontend-builder /app/dist ./dist/public
+# Copy frontend build files to the root dist directory that the server expects
+COPY --from=frontend-builder /app/dist ../dist
 
 # Create .env file template
-RUN echo "NODE_ENV=production" > .env.example
+RUN echo "NODE_ENV=production" > .env
 
 # Change ownership to nodejs user
 RUN chown -R eurovision:nodejs /app

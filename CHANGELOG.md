@@ -1,5 +1,11 @@
 # Changelog
 
+# [2.2.1] - 2026-05-03
+
+### Fixed
+
+- Fixed issue with building project with docker.
+
 ## [2.2.0] - 2026-05-03
 
 ### Added
@@ -7,7 +13,7 @@
 
 ## [2.1.0] - 2026-05-02
 
-### Fixed
+### Added
 - Added Eurovision 2026
 - Added Melodifestivalen 2026
 
