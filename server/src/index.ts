@@ -21,11 +21,13 @@ app.use(helmet({
       defaultSrc: ["'self'"],
       styleSrc: ["'self'", "'unsafe-inline'", "https://fonts.googleapis.com"],
       fontSrc: ["'self'", "https://fonts.gstatic.com"],
-      imgSrc: ["'self'", "data:", "https:"],
-      mediaSrc: ["'self'", "https://www.youtube.com", "https://youtube.com"],
-      frameSrc: ["'self'", "https://www.youtube.com", "https://youtube.com"],
-      connectSrc: ["'self'"],
-      scriptSrc: ["'self'", "'unsafe-inline'"] // Needed for Vite dev builds
+      imgSrc: ["'self'", "data:", "https:", "https://*.ytimg.com", "https://*.youtube.com"],
+      mediaSrc: ["'self'", "https://www.youtube.com", "https://youtube.com", "https://www.youtube-nocookie.com"],
+      frameSrc: ["'self'", "https://www.youtube.com", "https://youtube.com", "https://www.youtube-nocookie.com"],
+      connectSrc: ["'self'", "https://www.youtube.com", "https://youtube.com", "https://www.youtube-nocookie.com"],
+      scriptSrc: ["'self'", "'unsafe-inline'", "'unsafe-eval'", "https://www.youtube.com", "https://youtube.com"],
+      childSrc: ["'self'", "https://www.youtube.com", "https://youtube.com", "https://www.youtube-nocookie.com"],
+      objectSrc: ["'none'"]
     }
   }
 }));

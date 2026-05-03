@@ -1,10 +1,17 @@
 # Changelog
 
+# [2.2.2] - 2026-05-03
+
+### Fixed
+
+- Fixed YouTube Error 153 "Video player configuration error" by updating Content Security Policy to properly allow YouTube embeds
+- Updated CSP directives to include necessary YouTube domains and permissions for iframe functionality
+
 # [2.2.1] - 2026-05-03
 
 ### Fixed
 
-- Fixed issue with building project with docker.
+- Fixed Docker build issue where static files were not found (`ENOENT: no such file or directory, stat '/dist/index.html'`)
 
 ## [2.2.0] - 2026-05-03
 
